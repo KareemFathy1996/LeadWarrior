@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lead Warrior</title>
     <link rel="stylesheet" href="styles/styles.css">
-    <script src="js/global.js"></script>
 </head>
 
 <body>
@@ -20,8 +19,8 @@
                 <tr>
                     <td>
                         <div class="float-left row td-div" id="hero-nav-div">
-                            <img class="float-left nav-arrow" src="assets/prev.png">
-                            <img class="float-right nav-arrow" src="assets/next.png">
+                            <img class="float-left nav-arrow" src="assets/prev.png" onclick="pre()">
+                            <img class="float-right nav-arrow" src="assets/next.png" onclick="next()">
                             <div class="float-left" id="hero-name-img-div" class="column">
                                 <div id="choose-hero-name">Hero Name</div>
                                 <img id="choose-hero-img" src="assets/pikachu.png">
@@ -39,16 +38,16 @@
                         <div class="float-left td-div" id="stats-div">
                             <table>
                                 <tr>
-                                    <td>Name: </td>
-                                    <td>Kareem</td>
+                                    <td>Number of Bullets: </td>
+                                    <td id="numberOfBullets">3</td>
                                     <td>Health: </td>
-                                    <td>500</td>
+                                    <td id="health">500</td>
                                 </tr>
                                 <tr>
                                     <td>Attack. Speed: </td>
-                                    <td>0.5</td>
+                                    <td id="attackSpeed">0.5</td>
                                     <td>Movement Speed: </td>
-                                    <td>5</td>
+                                    <td id="movementSpeed">5</td>
                                 </tr>
                             </table>
                         </div>
@@ -62,6 +61,7 @@
             </table>
         </div>
     </div>
+    <script src="js/hero.js"></script>
 </body>
 
 </html>
