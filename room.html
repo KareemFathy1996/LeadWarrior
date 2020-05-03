@@ -15,50 +15,35 @@
             <div id="game-menu-title">LEAD WARRIOR</div>
         </div>
         <div id="game">
-            <table id="room">
-                <tr>
-                    <td>
-                        <div class="float-left row td-div" id="hero-nav-div">
-                            <img class="float-left nav-arrow" src="assets/prev.png" onclick="pre()">
-                            <img class="float-right nav-arrow" src="assets/next.png" onclick="next()">
-                            <div class="float-left" id="hero-name-img-div" class="column">
-                                <div id="choose-hero-name">Hero Name</div>
-                                <img id="choose-hero-img" src="assets/pikachu.png">
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="float-left td-div" id="upgrades-div">
-                            upgrades
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="float-left td-div" id="stats-div">
-                            <table>
-                                <tr>
-                                    <td>Number of Bullets: </td>
-                                    <td id="numberOfBullets">3</td>
-                                    <td>Health: </td>
-                                    <td id="health">500</td>
-                                </tr>
-                                <tr>
-                                    <td>Attack. Speed: </td>
-                                    <td id="attackSpeed">0.5</td>
-                                    <td>Movement Speed: </td>
-                                    <td id="movementSpeed">5</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="float-left td-div" id="room-start">
-                            Start Game
-                        </div>
-                    </td>
-                </tr>
-            </table>
+            <div id="room">
+                <div class="row" id="hero-nav-div">
+                    <img class="float-left nav-arrow" src="assets/prev.png" onclick="pre()">
+                    <div class="float-left" id="hero-name-img-div" class="column">
+                        <div id="choose-hero-name">Hero Name</div>
+                        <img id="choose-hero-img" src="assets/pikachu.png">
+                    </div>
+                    <img class="float-left nav-arrow" src="assets/next.png" onclick="next()">
+                </div>
+                <div id="stats-div">
+                    <table>
+                        <tr>
+                            <td>Number of Bullets: </td>
+                            <td id="numberOfBullets">3</td>
+                            <td>Health: </td>
+                            <td id="health">500</td>
+                        </tr>
+                        <tr>
+                            <td>Attack. Speed: </td>
+                            <td id="attackSpeed">0.5</td>
+                            <td>Movement Speed: </td>
+                            <td id="movementSpeed">5</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="room-start">
+                    Start Game
+                </div>
+            </div>
         </div>
     </div>
     <script src="js/hero.js"></script>

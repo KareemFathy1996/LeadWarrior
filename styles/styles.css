@@ -87,6 +87,7 @@ body {
 #room {
     margin: auto;
     padding: 10px;
+    width: fit-content;
     margin-top: 100px;
     background-color: rgb(202, 101, 101);
     border: yellow 2.5px solid;
@@ -111,40 +112,27 @@ body {
 
 #hero-nav-div {
     background-color: blueviolet;
-}
-
-#upgrades-div {
-    text-align: center;
-    background-color: blue;
-    height: 322px;
-    width: 150px;
-}
-
-td {
-    padding: 0px;
-}
-
-table {
-    border-spacing: 0px;
-}
-
-.td-div {
-    margin: 5px;
-    border: rgb(206, 178, 19) 2.5px solid;
+    background-color: rgb(202, 101, 101);
+    border: yellow 2.5px solid;
     border-radius: 5px;
 }
 
 #stats-div table {
     background-color: brown;
-    width: 440px;
+    width: 100%;
     height: 50px;
     padding: 10px;
+    margin: 10px 0px;
+    background-color: rgb(87, 194, 45);
+    border: yellow 2.5px solid;
+    border-radius: 5px;
 }
 
 #room-start {
-    background-color: coral;
-    width: 150px;
     height: 55px;
     text-align: center;
     line-height: 55px;
+    background-color: rgb(175, 29, 29);
+    border: yellow 2.5px solid;
+    border-radius: 5px;
 }
