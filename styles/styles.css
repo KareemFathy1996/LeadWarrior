@@ -85,28 +85,28 @@ body {
 }
 
 #room {
-    box-sizing: border-box;
     margin: auto;
     padding: 10px;
     margin-top: 100px;
-    background-color: rgb(121, 55, 55);
-    border: rgb(50, 37, 121) 2.5px solid;
+    background-color: rgb(202, 101, 101);
+    border: yellow 2.5px solid;
     border-radius: 5px;
-    width: fit-content;
 }
 
 .nav-arrow {
     width: 70px;
-    height: 300px;
+    height: 322px;
+    background-color: cyan;
 }
 
 #hero-name-img-div {
     text-align: center;
+    background-color: cornflowerblue;
 }
 
 #choose-hero-img {
-    width: 278px;
-    height: 278px;
+    width: 300px;
+    height: 300px;
 }
 
 #hero-nav-div {
@@ -116,12 +116,35 @@ body {
 #upgrades-div {
     text-align: center;
     background-color: blue;
+    height: 322px;
+    width: 150px;
 }
 
-#stats-div {
+td {
+    padding: 0px;
+}
+
+table {
+    border-spacing: 0px;
+}
+
+.td-div {
+    margin: 5px;
+    border: rgb(206, 178, 19) 2.5px solid;
+    border-radius: 5px;
+}
+
+#stats-div table {
     background-color: brown;
+    width: 440px;
+    height: 50px;
+    padding: 10px;
 }
 
 #room-start {
     background-color: coral;
+    width: 150px;
+    height: 55px;
+    text-align: center;
+    line-height: 55px;
 }
