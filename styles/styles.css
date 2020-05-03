@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(230, 223, 223);
+    background-color: rgba(233, 233, 233, 0.658);
 }
 
 .float-left {
@@ -17,18 +17,20 @@ body {
 }
 
 #game-window {
-    background-color: rgb(116, 63, 25);
+    background-color: rgb(180, 210, 230);
     width: 900px;
     height: 900px;
     margin: auto;
     overflow: auto;
+    border: rgba(231, 230, 216, 0.295) 2.5px solid;
+    border-radius: 5px;
 }
 
 #game-menu {
-    background-color: salmon;
+    background-color: rgb(95, 98, 126);
     width: 875px;
     height: 100px;
-    border: yellow 2.5px solid;
+    border: rgb(48, 48, 18) 2.5px solid;
     border-radius: 5px;
     margin: auto;
     margin-top: 10px;
@@ -40,20 +42,25 @@ body {
     margin: 10px;
 }
 
+#prev:hover {
+    cursor: pointer;
+    src: "../assets/back2.png";
+}
+
 #game-menu-title {
     margin: 23px auto;
     width: 250px;
     font-family: Impact, Charcoal, sans-serif;
     font-size: 40px;
-    color: rgb(255, 217, 4);
-    text-shadow: -5px 0 rgb(31, 61, 160), 0 0px rgb(31, 61, 160), 0px 0 rgb(31, 61, 160), 0 -5px rgb(31, 61, 160);
+    color: rgb(0, 0, 0);
+    text-shadow: -3px 0 rgb(130, 138, 161), 0 0px rgb(130, 138, 161), 0px 0 rgb(130, 138, 161), 0 -3px rgb(130, 138, 161);
 }
 
 #game {
-    background-color: seagreen;
+    background-color: rgb(95, 98, 126);
     width: 875px;
     height: 760px;
-    border: yellow 2.5px solid;
+    border: rgb(48, 48, 18) 2.5px solid;
     border-radius: 5px;
     margin: auto;
     margin-top: 10px;
@@ -64,24 +71,25 @@ body {
     margin: auto;
     padding: 10px;
     margin-top: 100px;
-    background-color: white;
-    border: yellow 2.5px solid;
+    background-color: rgba(12, 3, 3, 0.158);
+    border: rgb(48, 48, 30) 2.5px solid;
     border-radius: 5px;
 }
 
 .main-menu-button {
     width: 200px;
     height: 50px;
-    border: yellow 2.5px solid;
+    border: rgb(48, 48, 30) 2.5px solid;
     border-radius: 5px;
     margin: auto;
-    background-color: tomato;
+    background-color: rgb(187, 107, 93);
     text-align: center;
     line-height: 50px;
 }
 
 .main-menu-button:hover {
-    background-color: violet;
+    background-color: rgb(187, 50, 25);
+    cursor: pointer;
 }
 
 #room {
@@ -89,20 +97,26 @@ body {
     padding: 10px;
     width: fit-content;
     margin-top: 100px;
-    background-color: rgb(202, 101, 101);
-    border: yellow 2.5px solid;
+    background-color: rgba(12, 3, 3, 0.158);
+    border: rgb(48, 48, 30) 2.5px solid;
     border-radius: 5px;
 }
 
 .nav-arrow {
     width: 70px;
     height: 322px;
-    background-color: cyan;
+    border: rgb(48, 48, 30) 2.5px solid;
+    border-radius: 5px;
+}
+
+.nav-arrow:hover {
+    background-color: rgb(95, 98, 126);
+    cursor: pointer;
 }
 
 #hero-name-img-div {
+    margin: 0px 10px;
     text-align: center;
-    background-color: cornflowerblue;
 }
 
 #choose-hero-img {
@@ -110,21 +124,13 @@ body {
     height: 300px;
 }
 
-#hero-nav-div {
-    background-color: blueviolet;
-    background-color: rgb(202, 101, 101);
-    border: yellow 2.5px solid;
-    border-radius: 5px;
-}
-
 #stats-div table {
-    background-color: brown;
-    width: 100%;
     height: 50px;
     padding: 10px;
+    width: 100%;
     margin: 10px 0px;
-    background-color: rgb(87, 194, 45);
-    border: yellow 2.5px solid;
+    background-color: rgb(154, 219, 152);
+    border: rgb(48, 48, 30) 2.5px solid;
     border-radius: 5px;
 }
 
@@ -132,7 +138,28 @@ body {
     height: 55px;
     text-align: center;
     line-height: 55px;
-    background-color: rgb(175, 29, 29);
-    border: yellow 2.5px solid;
+    background-color: rgb(187, 107, 93);
+    border: rgb(48, 48, 30) 2.5px solid;
     border-radius: 5px;
+}
+
+#room-start:hover {
+    cursor: pointer;
+    background-color: rgb(187, 50, 25);
+}
+
+.td1 {
+    width: 35%;
+}
+
+.td2 {
+    width: 15%;
+}
+
+.td3 {
+    width: 35%;
+}
+
+.td4 {
+    width: 15%;
 }

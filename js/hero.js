@@ -12,7 +12,7 @@ class Hero {
 var heros = [
     new Hero("assets/pikachu.png", "Pikachu", 50, 0.75, 10, 5),
     new Hero("assets/snorlax.png", "Snorlax", 1000, 0.2, 5, 2),
-    new Hero("assets/bullbasaur.png", "Bullbasaur", 500, 0.75, 7, 3),
+    new Hero("assets/bullbasaur.png", "Bullbasaur", 500, 0.5, 7, 3),
 ]
 
 function next() {
