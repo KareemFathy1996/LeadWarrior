@@ -1,9 +1,9 @@
 body {
-    background-color: rosybrown;
+    background-color: rgb(230, 223, 223);
 }
 
 #game-window {
-    background-color: saddlebrown;
+    background-color: rgb(116, 63, 25);
     width: 900px;
     height: 900px;
     margin: auto;
@@ -28,4 +28,55 @@ body {
     border-radius: 5px;
     margin: auto;
     margin-top: 10px;
+}
+
+#game-menu-img {
+    margin: 5px;
+    padding: 5px;
+    width: 75px;
+    height: 75px;
+    border-radius: 5px;
+    border: rgb(31, 61, 82) 2.5px solid;
+    background-color: turquoise;
+    float: left;
+}
+
+.game-menu-stats-key {
+    color: rgb(59, 33, 151);
+}
+
+.game-menu-stats-value {
+    color: rgb(31, 100, 74);
+}
+
+#game-menu-stats {
+    font-size: 13px;
+    font-weight: bold;
+    margin: 5px;
+    padding: 3px;
+    height: 79px;
+    border-radius: 5px;
+    border: rgb(76, 138, 182) 2.5px solid;
+    background-color: rgb(146, 187, 69);
+    display: inline-block;
+}
+
+#game-menu-button {
+    margin: 5px;
+    padding: 5px;
+    width: 90px;
+    height: 90px;
+    border-radius: 5px;
+    border: rgb(144, 182, 209) 2.5px solid;
+    background-color: rgb(207, 151, 77);
+    float: right;
+}
+
+#game-menu-title {
+    float: right;
+    margin: 20px 200px 0px 0px;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 40px;
+    color: yellow;
+    text-shadow: -5px 0 rgb(31, 61, 160), 0 0px rgb(31, 61, 160), 0px 0 rgb(31, 61, 160), 0 -5px rgb(31, 61, 160);
 }
