@@ -2,6 +2,20 @@ body {
     background-color: rgb(230, 223, 223);
 }
 
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 #game-window {
     background-color: rgb(116, 63, 25);
     width: 900px;
@@ -20,6 +34,21 @@ body {
     margin-top: 10px;
 }
 
+#prev {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+}
+
+#game-menu-title {
+    margin: 23px auto;
+    width: 250px;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 40px;
+    color: rgb(255, 217, 4);
+    text-shadow: -5px 0 rgb(31, 61, 160), 0 0px rgb(31, 61, 160), 0px 0 rgb(31, 61, 160), 0 -5px rgb(31, 61, 160);
+}
+
 #game {
     background-color: seagreen;
     width: 875px;
@@ -30,53 +59,69 @@ body {
     margin-top: 10px;
 }
 
-#game-menu-img {
-    margin: 5px;
-    padding: 5px;
-    width: 75px;
-    height: 75px;
+.main-menu {
+    width: 300px;
+    margin: auto;
+    padding: 10px;
+    margin-top: 100px;
+    background-color: white;
+    border: yellow 2.5px solid;
     border-radius: 5px;
-    border: rgb(31, 61, 82) 2.5px solid;
-    background-color: turquoise;
-    float: left;
 }
 
-.game-menu-stats-key {
-    color: rgb(59, 33, 151);
-}
-
-.game-menu-stats-value {
-    color: rgb(31, 100, 74);
-}
-
-#game-menu-stats {
-    font-size: 13px;
-    font-weight: bold;
-    margin: 5px;
-    padding: 3px;
-    height: 79px;
+.main-menu-button {
+    width: 200px;
+    height: 50px;
+    border: yellow 2.5px solid;
     border-radius: 5px;
-    border: rgb(76, 138, 182) 2.5px solid;
-    background-color: rgb(146, 187, 69);
-    display: inline-block;
+    margin: auto;
+    background-color: tomato;
+    text-align: center;
+    line-height: 50px;
 }
 
-#game-menu-button {
-    margin: 5px;
-    padding: 5px;
-    width: 90px;
-    height: 90px;
+.main-menu-button:hover {
+    background-color: violet;
+}
+
+#room {
+    box-sizing: border-box;
+    margin: auto;
+    padding: 10px;
+    margin-top: 100px;
+    background-color: rgb(121, 55, 55);
+    border: rgb(50, 37, 121) 2.5px solid;
     border-radius: 5px;
-    border: rgb(144, 182, 209) 2.5px solid;
-    background-color: rgb(207, 151, 77);
-    float: right;
+    width: fit-content;
 }
 
-#game-menu-title {
-    float: right;
-    margin: 20px 200px 0px 0px;
-    font-family: Impact, Charcoal, sans-serif;
-    font-size: 40px;
-    color: yellow;
-    text-shadow: -5px 0 rgb(31, 61, 160), 0 0px rgb(31, 61, 160), 0px 0 rgb(31, 61, 160), 0 -5px rgb(31, 61, 160);
+.nav-arrow {
+    width: 70px;
+    height: 300px;
+}
+
+#hero-name-img-div {
+    text-align: center;
+}
+
+#choose-hero-img {
+    width: 278px;
+    height: 278px;
+}
+
+#hero-nav-div {
+    background-color: blueviolet;
+}
+
+#upgrades-div {
+    text-align: center;
+    background-color: blue;
+}
+
+#stats-div {
+    background-color: brown;
+}
+
+#room-start {
+    background-color: coral;
 }
