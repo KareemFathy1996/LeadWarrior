@@ -1,6 +1,7 @@
 class Hero {
-    constructor(src, name, health, attackSpeed, movementSpeed, numOfBullets) {
+    constructor(src, backgroundImage, name, health, attackSpeed, movementSpeed, numOfBullets) {
         this.src = src;
+        this.backgroundImage = backgroundImage;
         this.name = name;
         this.health = health;
         this.attackSpeed = attackSpeed;
@@ -10,9 +11,9 @@ class Hero {
 }
 
 var heros = [
-    new Hero("assets/pikachu.png", "Pikachu", 50, 0.75, 10, 5),
-    new Hero("assets/snorlax.png", "Snorlax", 1000, 0.2, 5, 2),
-    new Hero("assets/bullbasaur.png", "Bullbasaur", 500, 0.5, 7, 3),
+    new Hero("assets/Eevee.gif", "assets/Eevee-background.jpg", "Eevee", 500, 0.5, 7, 3),
+    new Hero("assets/Charizard.gif", "assets/Charizard-background.jpg", "Charizard", 50, 0.75, 10, 5),
+    new Hero("assets/Gengar.gif", "assets/Gengar-background.jpg", "Gengar", 1000, 0.2, 5, 2),
 ]
 
 function next() {
@@ -34,6 +35,7 @@ function updateHero(hero) {
     document.getElementById("attackSpeed").innerHTML = hero.attackSpeed;
     document.getElementById("movementSpeed").innerHTML = hero.movementSpeed;
     document.getElementById("numberOfBullets").innerHTML = hero.numOfBullets;
+    document.getElementById("choose-hero-img").style.backgroundImage = "url('" + hero.backgroundImage + "')";
 }
 
 var i = 0;

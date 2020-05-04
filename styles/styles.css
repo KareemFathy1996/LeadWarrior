@@ -104,7 +104,7 @@ body {
 
 .nav-arrow {
     width: 70px;
-    height: 322px;
+    height: 336px;
     border: rgb(48, 48, 30) 2.5px solid;
     border-radius: 5px;
 }
@@ -122,6 +122,15 @@ body {
 #choose-hero-img {
     width: 300px;
     height: 300px;
+    border-radius: 10px;
+    border: rgb(48, 48, 30) 2.5px solid;
+}
+
+#choose-hero-name {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(154, 219, 152);
+    font-weight: bold;
+    font-size: 30px;
 }
 
 #stats-div table {
