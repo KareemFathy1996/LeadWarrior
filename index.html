@@ -12,11 +12,13 @@
 <body>
     <div id="game-window">
         <div id="game-menu">
+            <img class="float-left" id="prev" src="assets/accessories/back1.png" onclick="prevPage()" onmouseover="this.src='assets/accessories/back2.png';" onmouseout="this.src='assets/accessories/back1.png';">
             <div id="game-menu-title">LEAD WARRIOR</div>
         </div>
-        <div id="game">
+        <div id="game-container">
+
             <div id="main-menu">
-                <div class="main-menu-button" onclick="location.href='room.html';">
+                <div class="main-menu-button" onclick="showRoom()">
                     Start Game
                 </div><br/>
                 <div class="main-menu-button">
@@ -32,13 +34,49 @@
                     Statistics
                 </div>
             </div>
+
+            <div id="room">
+                <div class="row" id="hero-nav-div">
+                    <img class="float-left nav-arrow" src="assets/accessories/prev.png" onclick="pre()">
+                    <div class="float-left" id="hero-name-img-div" class="column">
+                        <div id="choose-hero-name">Hero Name</div>
+                        <img id="choose-hero-img" src="">
+                    </div>
+                    <img class="float-left nav-arrow" src="assets/accessories/next.png" onclick="next()">
+                </div>
+                <div id="stats-div">
+                    <table>
+                        <tr>
+                            <td class="td1">num of Bullets: </td>
+                            <td class="td2" id="numberOfBullets">3</td>
+                            <td class="td3">Health: </td>
+                            <td class="td4" id="health">500</td>
+                        </tr>
+                        <tr>
+                            <td class="td1">Attack. Speed: </td>
+                            <td class="td2" id="attackSpeed">0.5</td>
+                            <td class="td3">Movement Speed: </td>
+                            <td class="td4" id="movementSpeed">5</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="room-start" onclick="showGame()">
+                    Start Game
+                </div>
+            </div>
+
+            <div id="game">
+            </div>
         </div>
     </div>
     <footer>
         <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></div>
         <div>Icons made by <a href="https://www.flaticon.com/authors/roundicons-freebies" title="Roundicons Freebies">Roundicons Freebies</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </footer>
-
+    <script src="js/navigation.js"></script>
+    <script src="js/hero.js"></script>
+    <script src="js/room.js"></script>
+    <script src="js/game.js"></script>
 </body>
 
 </html>
