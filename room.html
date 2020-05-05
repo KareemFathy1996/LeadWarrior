@@ -7,14 +7,6 @@
     <title>Lead Warrior</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="icon" href="assets/pokemon.png">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script type='text/javascript' src='loadImg.js'></script>
-    <script>
-        $(function() {
-            $('img').imgPreload()
-        })
-    </script>
 </head>
 
 <body>
@@ -49,7 +41,7 @@
                         </tr>
                     </table>
                 </div>
-                <div id="room-start">
+                <div id="room-start" onclick="location.href='game.html?' + selectedHero;">
                     Start Game
                 </div>
             </div>
@@ -60,6 +52,7 @@
         <div>Icons made by <a href="https://www.flaticon.com/authors/roundicons-freebies" title="Roundicons Freebies">Roundicons Freebies</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </footer>
     <script src="js/hero.js"></script>
+    <script src="js/room.js"></script>
 </body>
 
 </html>

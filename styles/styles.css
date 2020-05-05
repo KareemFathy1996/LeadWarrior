@@ -1,6 +1,4 @@
-body {
-    background-color: rgba(233, 233, 233, 0.658);
-}
+/* generic classes */
 
 .float-left {
     float: left;
@@ -14,6 +12,13 @@ body {
     content: "";
     clear: both;
     display: table;
+}
+
+
+/* backbone */
+
+body {
+    background-color: rgba(233, 233, 233, 0.658);
 }
 
 #game-window {
@@ -36,15 +41,14 @@ body {
     margin-top: 10px;
 }
 
-#prev {
-    width: 80px;
-    height: 80px;
-    margin: 10px;
-}
-
-#prev:hover {
-    cursor: pointer;
-    src: "../assets/back2.png";
+#game {
+    background-color: rgb(95, 98, 126);
+    width: 875px;
+    height: 760px;
+    border: rgb(48, 48, 18) 2.5px solid;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 10px;
 }
 
 #game-menu-title {
@@ -56,17 +60,21 @@ body {
     text-shadow: -3px 0 rgb(130, 138, 161), 0 0px rgb(130, 138, 161), 0px 0 rgb(130, 138, 161), 0 -3px rgb(130, 138, 161);
 }
 
-#game {
-    background-color: rgb(95, 98, 126);
-    width: 875px;
-    height: 760px;
-    border: rgb(48, 48, 18) 2.5px solid;
-    border-radius: 5px;
-    margin: auto;
-    margin-top: 10px;
+#prev {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
 }
 
-.main-menu {
+#prev:hover {
+    cursor: pointer;
+    src: "../assets/back2.png";
+}
+
+
+/* main menu */
+
+#main-menu {
     width: 300px;
     margin: auto;
     padding: 10px;
@@ -91,6 +99,9 @@ body {
     background-color: rgb(187, 50, 25);
     cursor: pointer;
 }
+
+
+/* room */
 
 #room {
     margin: auto;
@@ -172,3 +183,6 @@ body {
 .td4 {
     width: 15%;
 }
+
+
+/* game */
