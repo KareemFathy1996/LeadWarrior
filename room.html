@@ -7,23 +7,31 @@
     <title>Lead Warrior</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="icon" href="assets/pokemon.png">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type='text/javascript' src='loadImg.js'></script>
+    <script>
+        $(function() {
+            $('img').imgPreload()
+        })
+    </script>
 </head>
 
 <body>
     <div id="game-window">
         <div id="game-menu">
-            <img class="float-left" id="prev" src="assets/back1.png" onclick="location.href='index.html';" onmouseover="this.src='assets/back2.png';" onmouseout="this.src='assets/back1.png';">
+            <img class="float-left" id="prev" src="assets/accessories/back1.png" onclick="location.href='index.html';" onmouseover="this.src='assets/accessories/back2.png';" onmouseout="this.src='assets/accessories/back1.png';">
             <div id="game-menu-title">LEAD WARRIOR</div>
         </div>
         <div id="game">
             <div id="room">
                 <div class="row" id="hero-nav-div">
-                    <img class="float-left nav-arrow" src="assets/prev.png" onclick="pre()">
+                    <img class="float-left nav-arrow" src="assets/accessories/prev.png" onclick="pre()">
                     <div class="float-left" id="hero-name-img-div" class="column">
                         <div id="choose-hero-name">Hero Name</div>
                         <img id="choose-hero-img" src="">
                     </div>
-                    <img class="float-left nav-arrow" src="assets/next.png" onclick="next()">
+                    <img class="float-left nav-arrow" src="assets/accessories/next.png" onclick="next()">
                 </div>
                 <div id="stats-div">
                     <table>

@@ -10,22 +10,22 @@ class Hero {
     }
 }
 
-var heros = [
-    new Hero("assets/Eevee.gif", "assets/Eevee-background.jpg", "Eevee", 500, 0.5, 7, 3),
-    new Hero("assets/Charizard.gif", "assets/Charizard-background.jpg", "Charizard", 50, 0.75, 10, 5),
-    new Hero("assets/Gengar.gif", "assets/Gengar-background.jpg", "Gengar", 1000, 0.2, 5, 2),
+var heroes = [
+    new Hero("assets/heroes/Eevee/room.gif", "assets/heroes/Eevee/background.jpg", "Eevee", 500, 0.5, 7, 3),
+    new Hero("assets/heroes/Charizard/room.gif", "assets/heroes/Charizard/background.jpg", "Charizard", 50, 0.75, 10, 5),
+    new Hero("assets/heroes/Gengar/room.gif", "assets/heroes/Gengar/background.jpg", "Gengar", 1000, 0.2, 5, 2),
 ]
 
 function next() {
     i++
-    if (i >= heros.length) i = 0;
-    updateHero(heros[i])
+    if (i >= heroes.length) i = 0;
+    updateHero(heroes[i])
 }
 
 function pre() {
     i--
-    if (i < 0) i = heros.length - 1
-    updateHero(heros[i])
+    if (i < 0) i = heroes.length - 1
+    updateHero(heroes[i])
 }
 
 function updateHero(hero) {
@@ -39,4 +39,4 @@ function updateHero(hero) {
 }
 
 var i = 0;
-updateHero(heros[i])
+updateHero(heroes[i])
