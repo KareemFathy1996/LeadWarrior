@@ -22,4 +22,5 @@ function showGame() {
     document.getElementById("room").style.display = "none";
     document.getElementById("game").style.display = "block";
     currentPage = "game";
+    gameInit();
 }
