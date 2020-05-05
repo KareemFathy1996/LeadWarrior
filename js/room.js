@@ -1,16 +1,18 @@
 function next() {
-    selectedHero++
-    if (selectedHero >= heroes.length) selectedHero = 0;
-    updateHero(heroes[selectedHero])
+    selectedHeroIndex++
+    if (selectedHeroIndex >= heroes.length) selectedHeroIndex = 0;
+    updateHero()
 }
 
 function pre() {
-    selectedHero--
-    if (selectedHero < 0) selectedHero = heroes.length - 1
-    updateHero(heroes[selectedHero])
+    selectedHeroIndex--
+    if (selectedHeroIndex < 0) selectedHeroIndex = heroes.length - 1
+    updateHero()
 }
 
-function updateHero(hero) {
+function updateHero() {
+    hero = heroes[selectedHeroIndex];
+    map = maps[selectedHeroIndex]; // till add option to change map
     document.getElementById("choose-hero-img").src = hero.room;
     document.getElementById("choose-hero-name").innerHTML = hero.name;
     document.getElementById("health").innerHTML = hero.health;
@@ -20,5 +22,5 @@ function updateHero(hero) {
     document.getElementById("choose-hero-img").style.backgroundImage = "url('" + hero.backgroundImage + "')";
 }
 
-var selectedHero = 0;
-updateHero(heroes[selectedHero])
+var selectedHeroIndex = 0;
+updateHero()
