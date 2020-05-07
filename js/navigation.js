@@ -36,16 +36,3 @@ function prevPage() {
 }
 
 var currentPage = "main-menu";
-
-
-var gameContainer = document.getElementById("game-container");
-document.onreadystatechange = function() {
-    console.log("state changed");
-    if (document.readyState !== "complete") {
-        document.getElementById("loading-screen").style.display = "block";
-        console.log('loading')
-    } else {
-        document.getElementById("loading-screen").style.display = "none";
-        console.log('ready')
-    }
-};
