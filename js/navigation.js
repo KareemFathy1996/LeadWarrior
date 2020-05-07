@@ -1,38 +1,62 @@
-function showRoom() {
-    // hide
-    document.getElementById("main-menu").style.display = "none";
-    document.getElementById("game").style.display = "none";
-    // changes
-    document.getElementById("room").style.display = "block";
-    document.getElementById("prev").style.display = "block";
-    currentPage = "room";
-}
-
-function showGame() {
-    // hide
-    document.getElementById("room").style.display = "none";
-    // changes
-    document.getElementById("game").style.display = "block";
-    currentPage = "game";
-    gameInit();
-}
+var currentPage = "main-menu";
 
 function showMainMenu() {
-    // hide
-    document.getElementById("room").style.display = "none";
-    document.getElementById("prev").style.display = "none";
-    // changes
     document.getElementById("main-menu").style.display = "block";
-    currentPage = "main-menu";
 }
 
-function prevPage() {
-    if (currentPage == undefined || currentPage == "room") {
-        showMainMenu();
-    } else if (currentPage == "game") {
+function hideMainMenu() {
+    document.getElementById("main-menu").style.display = "none";
+}
+
+function changePage(next) {
+    // show loading
+
+    // hide current
+    if (currentPage == "room")
+        hideRoom();
+    else if (currentPage == "game")
+        hideGame();
+    else
+        hideMainMenu();
+
+    // go next
+    if (next == 'room')
         showRoom();
-        stopGame();
-    }
+    else if (next == 'game')
+        showGame();
+    else
+        showMainMenu();
+
+    currentPage = next;
 }
 
-var currentPage = "main-menu";
+var preloadImages = function(imageSources, callback) {
+
+    var images = [];
+
+    var tryCallback = function() {
+        var allImagesLoaded = (function() {
+            for (var i = images.length; i--;) {
+                if (!images[i].isLoaded) {
+                    return false;
+                }
+            }
+            return true;
+        })();
+
+        if (allImagesLoaded) {
+            callback();
+        }
+    };
+
+    for (var i = imageSources.length; i--;) {
+        var imageSrc = imageSources[i];
+        var image = document.createElement('img');
+        images.push(image);
+        image.onload = function() {
+            this.isLoaded = true;
+            tryCallback();
+        };
+        image.src = imageSrc;
+    }
+};

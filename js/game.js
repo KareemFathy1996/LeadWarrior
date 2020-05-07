@@ -12,29 +12,44 @@ var gameWidth;
 var gameHeight;
 var keyMap = { 37: false, 65: false, 38: false, 87: false, 39: false, 68: false, 40: false, 83: false };
 
+function showGame() {
+    document.getElementById("game").style.display = "block";
+    document.getElementById("prev").style.display = "block";
+    document.getElementById("prev").onclick = function() {
+        changePage("room");
+    }
+    gameInit();
+}
+
+function hideGame() {
+    document.getElementById("game").style.display = "none";
+    stopGame();
+}
+
 /* init */
 function gameInit() {
+    // reset variables
     gameWidth = game.offsetWidth;
     gameHeight = game.offsetHeight;
+
     // map
+    map = maps[selectedHeroIndex];
     game.innerHTML = "";
     game.style.backgroundImage = "url('" + map.src + "')";
-
     var image = document.createElement('img');
     image.src = getBgUrl(game);
-    image.onload = function() {
-        console.log('bg loaded')
-    };
+    // image.onload = imgLoaded();
 
     // hero
     hero.x = gameWidth / 2 - hero.width / 2;
     hero.y = gameHeight / 2 - hero.height / 2;
     addImg(hero.id, hero.game, hero.x, hero.y, hero.width, hero.height);
 
-    game.focus();
+    startGame();
 }
 
 function startGame() {
+    game.focus();
     renderIntervalId = setInterval(render, renderInterval);
     moveIntervalId = setInterval(move, moveInterval);
 }
@@ -74,13 +89,6 @@ function keyEventHandler(e) {
 
 game.addEventListener('keydown', keyEventHandler);
 game.addEventListener('keyup', keyEventHandler);
-
-game.addEventListener('focusout', (event) => {
-    stopGame();
-});
-game.addEventListener('focusin', (event) => {
-    startGame();
-});
 
 /* loop */
 

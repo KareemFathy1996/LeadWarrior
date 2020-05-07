@@ -5,6 +5,7 @@ class Map {
 }
 
 var maps = [
+    // src
     new Map("assets/maps/1.jpg"),
     new Map("assets/maps/2.jpg"),
     new Map("assets/maps/3.jpg"),

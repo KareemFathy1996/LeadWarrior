@@ -21,6 +21,7 @@ class Hero {
 }
 
 var heroes = [
+    // room, game, backgroundImage, name, health, attackSpeed, movementSpeed, numOfBullets
     new Hero("assets/heroes/Eevee/room.gif", "assets/heroes/Eevee/game.png", "assets/heroes/Eevee/background.jpg", "Eevee", 500, 0.5, 4.5, 3),
     new Hero("assets/heroes/Charizard/room.gif", "assets/heroes/Charizard/game.png", "assets/heroes/Charizard/background.jpg", "Charizard", 50, 0.75, 3.5, 5),
     new Hero("assets/heroes/Gengar/room.gif", "assets/heroes/Gengar/game.png", "assets/heroes/Gengar/background.jpg", "Gengar", 1000, 0.2, 4, 2),

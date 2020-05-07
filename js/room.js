@@ -1,18 +1,48 @@
-function next() {
-    selectedHeroIndex++
+function showRoom() {
+    // objects to render
+
+
+    document.getElementById("room").style.display = "block";
+    document.getElementById("prev").style.display = "block";
+    document.getElementById("prev").onclick = function() {
+        changePage("main-menu");
+    }
+    updateHero();
+
+
+    // preload images
+    var images = [];
+    for (var i = 0; i < heroes.length; i++) {
+        images.push(heroes[i].room);
+        images.push(heroes[i].backgroundImage);
+    }
+
+    var callback = function() {
+        console.log('OHHAI!');
+    };
+
+    preloadImages(images, callback);
+}
+
+function hideRoom() {
+    document.getElementById("room").style.display = "none";
+    document.getElementById("prev").style.display = "none";
+}
+
+function nextHero() {
+    selectedHeroIndex++;
     if (selectedHeroIndex >= heroes.length) selectedHeroIndex = 0;
     updateHero()
 }
 
-function pre() {
-    selectedHeroIndex--
+function preHero() {
+    selectedHeroIndex--;
     if (selectedHeroIndex < 0) selectedHeroIndex = heroes.length - 1
     updateHero()
 }
 
 function updateHero() {
     hero = heroes[selectedHeroIndex];
-    map = maps[selectedHeroIndex]; // till add option to change map
     document.getElementById("choose-hero-img").src = hero.room;
     document.getElementById("choose-hero-name").innerHTML = hero.name;
     document.getElementById("health").innerHTML = hero.health;
@@ -23,4 +53,3 @@ function updateHero() {
 }
 
 var selectedHeroIndex = 0;
-updateHero()
