@@ -20,6 +20,12 @@ function gameInit() {
     game.innerHTML = "";
     game.style.backgroundImage = "url('" + map.src + "')";
 
+    var image = document.createElement('img');
+    image.src = getBgUrl(game);
+    image.onload = function() {
+        console.log('bg loaded')
+    };
+
     // hero
     hero.x = gameWidth / 2 - hero.width / 2;
     hero.y = gameHeight / 2 - hero.height / 2;
@@ -109,4 +115,17 @@ function renderImg(id, x, y) {
     var img = document.getElementById(id);
     img.style.left = x + 'px';
     img.style.top = y + 'px';
+}
+
+
+function getBgUrl(el) {
+    var bg = "";
+    if (el.currentStyle) { // IE
+        bg = el.currentStyle.backgroundImage;
+    } else if (document.defaultView && document.defaultView.getComputedStyle) { // Firefox
+        bg = document.defaultView.getComputedStyle(el, "").backgroundImage;
+    } else { // try and get inline style
+        bg = el.style.backgroundImage;
+    }
+    return bg.replace(/url\(['"]?(.*?)['"]?\)/i, "$1");
 }
