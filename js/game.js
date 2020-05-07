@@ -12,6 +12,20 @@ var gameWidth;
 var gameHeight;
 var keyMap = { 37: false, 65: false, 38: false, 87: false, 39: false, 68: false, 40: false, 83: false };
 
+function initGamePage() {
+    // images to preload
+    var images = [];
+    images.push(map.src);
+    images.push(hero.game);
+
+    var preloadDone = function() {
+        removeLoadingScreen();
+        showGame();
+    };
+
+    preloadImages(images, preloadDone);
+}
+
 function showGame() {
     document.getElementById("game").style.display = "block";
     document.getElementById("prev").style.display = "block";
@@ -33,7 +47,6 @@ function gameInit() {
     gameHeight = game.offsetHeight;
 
     // map
-    map = maps[selectedHeroIndex];
     game.innerHTML = "";
     game.style.backgroundImage = "url('" + map.src + "')";
     var image = document.createElement('img');

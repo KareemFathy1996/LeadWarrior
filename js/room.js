@@ -1,27 +1,26 @@
-function showRoom() {
-    // objects to render
-
-
-    document.getElementById("room").style.display = "block";
-    document.getElementById("prev").style.display = "block";
-    document.getElementById("prev").onclick = function() {
-        changePage("main-menu");
-    }
-    updateHero();
-
-
-    // preload images
+function initRoomPage() {
+    // images to preload
     var images = [];
     for (var i = 0; i < heroes.length; i++) {
         images.push(heroes[i].room);
         images.push(heroes[i].backgroundImage);
     }
 
-    var callback = function() {
-        console.log('OHHAI!');
+    var preloadDone = function() {
+        removeLoadingScreen();
+        showRoom();
     };
 
-    preloadImages(images, callback);
+    preloadImages(images, preloadDone);
+}
+
+function showRoom() {
+    updateHero();
+    document.getElementById("room").style.display = "block";
+    document.getElementById("prev").style.display = "block";
+    document.getElementById("prev").onclick = function() {
+        changePage("main-menu");
+    }
 }
 
 function hideRoom() {
@@ -42,6 +41,7 @@ function preHero() {
 }
 
 function updateHero() {
+    map = maps[selectedHeroIndex]; // delete this later
     hero = heroes[selectedHeroIndex];
     document.getElementById("choose-hero-img").src = hero.room;
     document.getElementById("choose-hero-name").innerHTML = hero.name;

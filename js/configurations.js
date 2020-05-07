@@ -4,3 +4,5 @@ var heroHeight = 50;
 
 var renderInterval = 15;
 var moveInterval = 15;
+
+var loadingScreenTime = 300;

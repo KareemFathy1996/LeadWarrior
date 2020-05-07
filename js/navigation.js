@@ -1,7 +1,8 @@
 var currentPage = "main-menu";
 
-function showMainMenu() {
+function showMainMenuPage() {
     document.getElementById("main-menu").style.display = "block";
+    removeLoadingScreen();
 }
 
 function hideMainMenu() {
@@ -10,6 +11,7 @@ function hideMainMenu() {
 
 function changePage(next) {
     // show loading
+    showLoadingScreen();
 
     // hide current
     if (currentPage == "room")
@@ -20,20 +22,31 @@ function changePage(next) {
         hideMainMenu();
 
     // go next
-    if (next == 'room')
-        showRoom();
-    else if (next == 'game')
-        showGame();
-    else
-        showMainMenu();
-
+    var nextFunction;
     currentPage = next;
+    if (next == 'room')
+        nextFunction = initRoomPage;
+    else if (next == 'game')
+        nextFunction = initGamePage;
+    else
+        nextFunction = showMainMenuPage;
+
+    setTimeout(() => {
+        nextFunction();
+    }, loadingScreenTime);
+}
+
+function showLoadingScreen() {
+    startedLoading = new Date();
+    document.getElementById("loading-screen").style.zIndex = "1";
+}
+
+function removeLoadingScreen() {
+    document.getElementById("loading-screen").style.zIndex = "-1";
 }
 
 var preloadImages = function(imageSources, callback) {
-
     var images = [];
-
     var tryCallback = function() {
         var allImagesLoaded = (function() {
             for (var i = images.length; i--;) {
@@ -48,7 +61,6 @@ var preloadImages = function(imageSources, callback) {
             callback();
         }
     };
-
     for (var i = imageSources.length; i--;) {
         var imageSrc = imageSources[i];
         var image = document.createElement('img');
