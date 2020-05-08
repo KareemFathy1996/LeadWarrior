@@ -7,8 +7,8 @@ function initRoomPage() {
     }
 
     var preloadDone = function() {
-        removeLoadingScreen();
         showRoom();
+        removeLoadingScreen();
     };
 
     preloadImages(images, preloadDone);
