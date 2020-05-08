@@ -15,8 +15,11 @@ class Enemy {
         this.moving = false;
         this.angle = Math.floor(Math.random() * 360);
         this.movementSpeed = enemyMovementSpeed;
+        this.attackSpeed = enemyAttackSpeed;
         this.lastAngleTime = new Date();
         this.nextAngleTime = minNewAngleTime + Math.floor(Math.random() * maxNewAngleTime);
+        this.lastFire = 0;
+        this.health = enemyHealth;
 
         this.id = 'enemy' + getEnemyId();
         this.src = 'assets/enemies/' + type + '/src.png';
@@ -24,9 +27,5 @@ class Enemy {
         this.y = y;
         this.width = width;
         this.height = height;
-
-        // configurations
-        this.width = heroWidth;
-        this.height = heroHeight;
     }
 }
