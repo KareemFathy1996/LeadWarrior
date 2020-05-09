@@ -130,20 +130,10 @@ function move() {
 
 function fire() {
     // hero
-    if (hero.firing && new Date() - hero.lastFire > hero.attackSpeed) {
-        bullets.push(new Bullet('Hero', 'assets/enemies/bullet1.png', hero.x + hero.width / 2 - bulletWidth / 2, hero.y + hero.height / 2 - bulletHeight / 2, hero.angle));
-        var temp = bullets[bullets.length - 1];
-        addImg(temp.id, temp.src, temp.x, temp.y, temp.width, temp.height);
-        hero.lastFire = new Date();
-    }
+    hero.fire();
     // enemies
     for (var i = 0; i < enemies.length; i++) {
-        if (new Date() - enemies[i].lastFire > enemies[i].attackSpeed) {
-            bullets.push(new Bullet('Enemy', 'assets/enemies/bullet2.png', enemies[i].x + enemies[i].width / 2 - bulletWidth / 2, enemies[i].y + enemies[i].height / 2 - bulletHeight / 2, enemies[i].angle));
-            var temp = bullets[bullets.length - 1];
-            addImg(temp.id, temp.src, temp.x, temp.y, temp.width, temp.height);
-            enemies[i].lastFire = new Date();
-        }
+        enemies[i].fire();
     }
 }
 
