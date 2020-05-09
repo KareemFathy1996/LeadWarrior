@@ -106,94 +106,25 @@ function render() {
         renderImg(enemies[i].id, enemies[i].x, enemies[i].y);
 
     for (var i = 0; i < bullets.length; i++)
-        renderImg(bullets[i].id, bullets[i].x, bullets[i].y)
+        renderImg(bullets[i].id, bullets[i].x, bullets[i].y);
 }
 
 function move() {
     // hero
-    if (hero.moving) {
-        hero.x = Math.max(Math.min(hero.x + hero.movementSpeed * Math.cos(Math.PI * hero.angle / 180), gameWidth - hero.width), 0);
-        hero.y = Math.max(Math.min(hero.y + hero.movementSpeed * Math.sin(Math.PI * hero.angle / 180), gameHeight - hero.height), 0);
-    }
+    hero.move();
 
     // enemies
     for (var i = 0; i < enemies.length; i++) {
-        // calculate new angle periodic
-        if (new Date() - enemies[i].lastAngleTime >= enemies[i].nextAngleTime) {
-            enemies[i].angle = Math.floor(Math.random() * 360);
-            enemies[i].lastAngleTime = new Date();
-            enemies[i].nextAngleTime = minNewAngleTime + Math.floor(Math.random() * maxNewAngleTime);
-        }
-        // Calculate The New Position of the Enemy
-        var newX = enemies[i].x + enemies[i].movementSpeed * Math.cos(Math.PI * enemies[i].angle / 180);
-        var newY = enemies[i].y + enemies[i].movementSpeed * Math.sin(Math.PI * enemies[i].angle / 180);
-        // While the Angle Led to a Position Outside Play Area the Rechange Angle
-        while (newX < 0 || newY < 0 || newX + enemies[i].width > gameWidth || newY + enemies[i].height > gameHeight) {
-            enemies[i].angle = Math.floor(Math.random() * 360);
-            enemies[i].lastAngleTime = new Date();
-            enemies[i].nextAngleTime = minNewAngleTime + Math.floor(Math.random() * maxNewAngleTime);
-            var newX = enemies[i].x + enemies[i].movementSpeed * Math.cos(Math.PI * enemies[i].angle / 180);
-            var newY = enemies[i].y + enemies[i].movementSpeed * Math.sin(Math.PI * enemies[i].angle / 180);
-        }
-        // Set New Position of Enemy 
-        enemies[i].x = newX;
-        enemies[i].y = newY;
+        enemies[i].move();
     }
 
     // bullets 
     for (var i = 0; i < bullets.length; i++) {
-        // Calculate The New Position of the Enemy
-        var newX = bullets[i].x + bullets[i].movementSpeed * Math.cos(Math.PI * bullets[i].angle / 180);
-        var newY = bullets[i].y + bullets[i].movementSpeed * Math.sin(Math.PI * bullets[i].angle / 180);
-
-        var removed = false;
-        if (bullets[i].fireType == 'Hero') {
-            for (var j = 0; j < enemies.length; j++) {
-                if ((bullets[i].x > enemies[j].x && bullets[i].x < enemies[j].x + enemies[j].width && bullets[i].y > enemies[j].y && bullets[i].y < enemies[j].y + enemies[j].height) ||
-                    (bullets[i].x + bullets[i].width > enemies[j].x && bullets[i].x + bullets[i].width < enemies[j].x + enemies[j].width && bullets[i].y + bullets[i].height > enemies[j].y && bullets[i].y + bullets[i].height < enemies[j].y + enemies[j].height) ||
-                    (bullets[i].x > enemies[j].x && bullets[i].x < enemies[j].x + enemies[j].width && bullets[i].y + bullets[i].height > enemies[j].y && bullets[i].y + bullets[i].height < enemies[j].y + enemies[j].height) ||
-                    (bullets[i].x + bullets[i].width > enemies[j].x && bullets[i].x + bullets[i].width < enemies[j].x + enemies[j].width && bullets[i].y > enemies[j].y && bullets[i].y < enemies[j].y + enemies[j].height)) {
-                    enemies[j].health -= bullets[i].damage;
-                    if (enemies[j].health <= 0) {
-                        var img = document.getElementById(enemies[j].id);
-                        img.parentNode.removeChild(img);
-                        enemies.splice(j, 1);
-                        j--;
-                        if (enemies.length == 0) {
-                            console.log('game won');
-                            stopGame();
-                        }
-                        continue;
-                    }
-                    removed = true;
-                    break;
-                }
-            }
-        } else {
-            if ((bullets[i].x > hero.x && bullets[i].x < hero.x + hero.width && bullets[i].y > hero.y && bullets[i].y < hero.y + hero.height) ||
-                (bullets[i].x + bullets[i].width > hero.x && bullets[i].x + bullets[i].width < hero.x + hero.width && bullets[i].y + bullets[i].height > hero.y && bullets[i].y + bullets[i].height < hero.y + hero.height) ||
-                (bullets[i].x > hero.x && bullets[i].x < hero.x + hero.width && bullets[i].y + bullets[i].height > hero.y && bullets[i].y + bullets[i].height < hero.y + hero.height) ||
-                (bullets[i].x + bullets[i].width > hero.x && bullets[i].x + bullets[i].width < hero.x + hero.width && bullets[i].y > hero.y && bullets[i].y < hero.y + hero.height)) {
-                hero.health -= bullets[i].damage;
-                if (hero.health <= 0) {
-                    stopGame();
-                    console.log('game lost');
-                    return;
-                }
-                removed = true;
-            }
-        }
-
-        if (removed || newX < 0 || newY < 0 || newX + bullets[i].width > gameWidth || newY + bullets[i].height > gameHeight) {
-            var img = document.getElementById(bullets[i].id);
-            img.parentNode.removeChild(img);
+        bullets[i].move();
+        if (bullets[i].removed) {
             bullets.splice(i, 1);
             i--;
-            continue;
         }
-        // Set New Position of Enemy 
-        bullets[i].x = newX;
-        bullets[i].y = newY;
     }
 }
 

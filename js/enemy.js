@@ -1,31 +1,29 @@
-var enemyMaxId = 0;
-var enemiesFreeIds = [];
+class Enemy extends Firing {
+    constructor(type, x, y, width, height, numOfBullets) {
+        super(false, Math.floor(Math.random() * 360), enemyMovementSpeed, 'assets/enemies/' + type + '/src.png', x, y, width, height, 5, enemyHealth,
+            enemyAttackSpeed, numOfBullets, false, name, bulletDamage);
 
-function getEnemyId() {
-    if (enemiesFreeIds.length == 0) {
-        return enemyMaxId++;
-    } else {
-        return enemiesFreeIds.pop();
-    }
-}
-
-class Enemy {
-    constructor(type, x, y, width, height) {
-        // init
-        this.moving = false;
-        this.angle = Math.floor(Math.random() * 360);
-        this.movementSpeed = enemyMovementSpeed;
-        this.attackSpeed = enemyAttackSpeed;
         this.lastAngleTime = new Date();
         this.nextAngleTime = minNewAngleTime + Math.floor(Math.random() * maxNewAngleTime);
-        this.lastFire = 0;
-        this.health = enemyHealth;
+    }
+    move() {
+        if (new Date() - this.lastAngleTime >= this.nextAngleTime) {
+            this.newAngle();
+        }
+        var newX = this.newX();
+        var newY = this.newY();
+        while (newX < 0 || newY < 0 || newX + this.width > gameWidth || newY + this.height > gameHeight) {
+            this.newAngle();
+            newX = this.newX();
+            newY = this.newY();
+        }
+        this.x = newX;
+        this.y = newY;
+    }
 
-        this.id = 'enemy' + getEnemyId();
-        this.src = 'assets/enemies/' + type + '/src.png';
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+    newAngle() {
+        this.lastAngleTime = new Date();
+        this.nextAngleTime = minNewAngleTime + Math.floor(Math.random() * maxNewAngleTime);
+        this.angle = Math.floor(Math.random() * 360);
     }
 }
