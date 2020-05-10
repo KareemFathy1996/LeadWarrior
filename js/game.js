@@ -12,9 +12,8 @@ var fireIntervalId;
 var gameWidth;
 var gameHeight;
 var keyMap = { 37: false, 65: false, 38: false, 87: false, 39: false, 68: false, 40: false, 83: false };
-var enemies;
 var enemiesMoving = false;
-var bullets;
+var movingObjects;
 
 function initGamePage() {
     // images to preload
@@ -53,6 +52,7 @@ function gameInit() {
     // reset variables
     gameWidth = game.offsetWidth;
     gameHeight = game.offsetHeight;
+    movingObjects = [];
 
     // map
     game.innerHTML = "";
@@ -62,21 +62,20 @@ function gameInit() {
     hero.x = map.startX;
     hero.y = map.startY;
     hero.health = hero.maxHealth;
+    hero.removed = false;
+    addMovingOjbect(hero);
     addImg(hero.id, hero.src, hero.x, hero.y, hero.width, hero.height);
 
     // enemies
-    enemies = [];
     for (var type in map.enemies) {
         for (var j = 0; j < map.enemies[type]; j++) {
             var x = Math.floor(Math.random() * (gameWidth - enemyWidth));
             var y = Math.floor(Math.random() * (gameHeight - enemyHeight));
-            enemies.push(new Enemy(type, x, y, enemyWidth, enemyHeight));
-            var last = enemies[enemies.length - 1];
+            addMovingOjbect(new Enemy(type, x, y, enemyWidth, enemyHeight));
+            var last = movingObjects[movingObjects.length - 1];
             addImg(last.id, last.src, last.x, last.y, last.width, last.height);
         }
     }
-
-    bullets = [];
 }
 
 function startGame() {
@@ -84,7 +83,8 @@ function startGame() {
     renderIntervalId = setInterval(render, renderInterval);
     moveIntervalId = setInterval(move, moveInterval);
     fireIntervalId = setInterval(fire, fireInterval);
-    enemiesMoving = true;
+    collisionDetectionId = setInterval(collisionDetection, collisionDetectionInterval);
+    updateGameStatusId = setInterval(updateGameStatus, updateGameStatusInterval);
 }
 
 function stopGame() {
@@ -93,51 +93,78 @@ function stopGame() {
     clearInterval(renderIntervalId);
     clearInterval(moveIntervalId);
     clearInterval(fireIntervalId);
+    clearInterval(collisionDetectionId);
+    clearInterval(updateGameStatusId);
 }
 
 /* loop */
 
 function render() {
-    // hero
-    renderImg(hero.id, hero.x, hero.y);
-
-    // enemies
-    for (var i = 0; i < enemies.length; i++)
-        renderImg(enemies[i].id, enemies[i].x, enemies[i].y);
-
-    for (var i = 0; i < bullets.length; i++)
-        renderImg(bullets[i].id, bullets[i].x, bullets[i].y);
+    for (var i = 0; i < movingObjects.length; i++) {
+        if (movingObjects[i].removed) {
+            removeImg(movingObjects[i].id);
+            if (movingObjects[i] instanceof Enemy)
+                Enemy.numberOfEnemies--;
+            movingObjects.splice(i, 1);
+            i--;
+            continue;
+        }
+        renderImg(movingObjects[i].id, movingObjects[i].x, movingObjects[i].y);
+    }
 }
 
 function move() {
-    // hero
-    hero.move();
-
-    // enemies
-    for (var i = 0; i < enemies.length; i++) {
-        enemies[i].move();
-    }
-
-    // bullets 
-    for (var i = 0; i < bullets.length; i++) {
-        bullets[i].move();
-        if (bullets[i].removed) {
-            bullets.splice(i, 1);
+    for (var i = 0; i < movingObjects.length; i++) {
+        if (movingObjects[i].removed) {
+            removeImg(movingObjects[i].id);
+            if (movingObjects[i] instanceof Enemy)
+                Enemy.numberOfEnemies--;
+            movingObjects.splice(i, 1);
             i--;
+            continue;
         }
+        movingObjects[i].move();
     }
 }
 
 function fire() {
-    // hero
-    hero.fire();
-    // enemies
-    for (var i = 0; i < enemies.length; i++) {
-        enemies[i].fire();
+    for (var i = 0; i < movingObjects.length; i++) {
+        if (movingObjects[i] instanceof Firing)
+            movingObjects[i].fire();
+    }
+}
+
+function collisionDetection() {
+    for (var i = 0; i < movingObjects.length; i++) {
+        var object1 = movingObjects[i];
+        for (var j = i + 1; j < movingObjects.length; j++) {
+            var object2 = movingObjects[j];
+            if ((object1.x > object2.x && object1.x < object2.x + object2.width && object1.y > object2.y && object1.y < object2.y + object2.height) ||
+                (object1.x + object1.width > object2.x && object1.x + object1.width < object2.x + object2.width && object1.y + object1.height > object2.y && object1.y + object1.height < object2.y + object2.height) ||
+                (object1.x > object2.x && object1.x < object2.x + object2.width && object1.y + object1.height > object2.y && object1.y + object1.height < object2.y + object2.height) ||
+                (object1.x + object1.width > object2.x && object1.x + object1.width < object2.x + object2.width && object1.y > object2.y && object1.y < object2.y + object2.height)) {
+                collisionDetected(object1, object2);
+            }
+        }
+    }
+}
+
+function updateGameStatus() {
+    if (hero.removed) {
+        console.log('game lost');
+        stopGame();
+    }
+    if (Enemy.numberOfEnemies == 0) {
+        console.log('game won');
+        stopGame();
     }
 }
 
 /* helping functions */
+
+function addMovingOjbect(movingObject) {
+    movingObjects.push(movingObject);
+}
 
 function addImg(id, src, x, y, width, height) {
     var img = document.createElement('img');
@@ -157,6 +184,11 @@ function renderImg(id, x, y) {
     img.style.top = y + 'px';
 }
 
+function removeImg(id) {
+    var img = document.getElementById(id);
+    img.parentNode.removeChild(img);
+}
+
 
 function getBgUrl(el) {
     var bg = "";
@@ -168,6 +200,21 @@ function getBgUrl(el) {
         bg = el.style.backgroundImage;
     }
     return bg.replace(/url\(['"]?(.*?)['"]?\)/i, "$1");
+}
+
+function collisionDetected(object1, object2) {
+    if (object1 instanceof Enemy && object2 instanceof Enemy)
+        return;
+    if (object1 instanceof Bullet && object2 instanceof Bullet && object1.fireType == object2.fireType)
+        return;
+    if ((object1 instanceof Bullet && object2 instanceof Hero && object1.fireType == "Hero") || (object2 instanceof Bullet && object1 instanceof Hero && object2.fireType == "Hero"))
+        return;
+    if ((object1 instanceof Bullet && object2 instanceof Enemy && object1.fireType == "Enemy") || (object2 instanceof Bullet && object1 instanceof Enemy && object2.fireType == "Enemy"))
+        return;
+    var touchDamage1 = object1.touchDamage;
+    var touchDamage2 = object2.touchDamage;
+    object1.hitBy(touchDamage2);
+    object2.hitBy(touchDamage1);
 }
 
 /* listener */

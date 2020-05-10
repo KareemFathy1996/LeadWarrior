@@ -3,9 +3,9 @@ var freeIds = [];
 
 function getId() {
     if (freeIds.length == 0) {
-        return 'hero' + id++;
+        return id++;
     } else {
-        return 'hero' + freeIds.pop();
+        return freeIds.pop();
     }
 }
 
@@ -24,6 +24,7 @@ class Moving {
         this.maxHealth = maxHealth;
 
         this.health = this.maxHealth;
+        this.removed = false;
     }
 
     newX() {
@@ -37,5 +38,11 @@ class Moving {
     move() {
         this.x = this.newX();
         this.y = this.newY();
+    }
+
+    hitBy(touchDamage) {
+        this.health -= touchDamage;
+        if (this.health <= 0)
+            this.removed = true;
     }
 }

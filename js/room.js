@@ -45,7 +45,7 @@ function updateHero() {
     hero = heroes[selectedHeroIndex];
     document.getElementById("choose-hero-img").src = hero.room;
     document.getElementById("choose-hero-name").innerHTML = hero.name;
-    document.getElementById("health").innerHTML = hero.health;
+    document.getElementById("health").innerHTML = hero.maxHealth;
     document.getElementById("attackSpeed").innerHTML = hero.attackSpeed;
     document.getElementById("movementSpeed").innerHTML = hero.movementSpeed;
     document.getElementById("numberOfBullets").innerHTML = hero.numOfBullets;

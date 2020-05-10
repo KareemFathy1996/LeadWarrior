@@ -1,6 +1,6 @@
 class Hero extends Firing {
     constructor(room, src, backgroundImage, name, maxHealth, attackSpeed, movementSpeed, numOfBullets) {
-        super(false, 45, movementSpeed, src, 0, 0, heroWidth, heroHeight, 5, maxHealth,
+        super(false, 45, movementSpeed, src, 0, 0, heroWidth, heroHeight, 0.1, maxHealth,
             attackSpeed, numOfBullets, false, name, bulletDamage, 'Hero', 'assets/enemies/bullet1.png');
 
         this.room = room;

@@ -17,8 +17,8 @@ class Firing extends Moving {
 
     fire() {
         if (this.firing && new Date() - this.lastFire > this.attackSpeed) {
-            bullets.push(new Bullet(this.fireSrc, this.bulletSrc, this.x + this.width / 2 - bulletWidth / 2, this.y + this.height / 2 - bulletHeight / 2, this.angle));
-            var temp = bullets[bullets.length - 1];
+            movingObjects.push(new Bullet(this.fireSrc, this.bulletSrc, this.x + this.width / 2 - bulletWidth / 2, this.y + this.height / 2 - bulletHeight / 2, this.angle));
+            var temp = movingObjects[movingObjects.length - 1];
             addImg(temp.id, temp.src, temp.x, temp.y, temp.width, temp.height);
             this.lastFire = new Date();
         }
