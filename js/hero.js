@@ -8,8 +8,15 @@ class Hero extends Firing {
     }
     move() {
         if (this.moving) {
-            this.x = Math.max(Math.min(this.newX(), gameWidth - this.width), 0);
-            this.y = Math.max(Math.min(this.newY(), gameHeight - this.height), 0);
+            var newX = this.newX();
+            var newY = this.newY();
+            if (canMoveTo(newX, newY, this.width, this.height)) {
+                this.x = newX;
+                this.y = newY;
+            } else if (canMoveTo(this.x, newY, this.width, this.height))
+                this.y = newY;
+            else if (canMoveTo(newX, this.y, this.width, this.height))
+                this.x = newX;
         }
     }
 }

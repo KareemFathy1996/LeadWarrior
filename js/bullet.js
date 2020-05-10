@@ -8,8 +8,8 @@ class Bullet extends Moving {
         var newX = this.newX();
         var newY = this.newY();
 
-        if (newX < 0 || newY < 0 || newX + this.width > gameWidth || newY + this.height > gameHeight) {
-            this.removed = true;
+        if (!canMoveTo(newX, newY, this.width, this.height)) {
+            this.remove();
         } else {
             this.x = newX;
             this.y = newY;

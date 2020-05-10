@@ -1,11 +1,7 @@
 var heroWidth = 50;
 var heroHeight = 50;
 
-var renderInterval = 15;
-var moveInterval = 15;
-var fireInterval = 15;
-var collisionDetectionInterval = 15;
-var updateGameStatusInterval = 15;
+var loopInterval = 15;
 
 var loadingScreenTime = 300;
 

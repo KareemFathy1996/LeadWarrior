@@ -27,6 +27,10 @@ class Moving {
         this.removed = false;
     }
 
+    remove() {
+        this.removed = true;
+    }
+
     newX() {
         return this.x + this.movementSpeed * Math.cos(Math.PI * this.angle / 180);
     }
@@ -43,6 +47,6 @@ class Moving {
     hitBy(touchDamage) {
         this.health -= touchDamage;
         if (this.health <= 0)
-            this.removed = true;
+            this.remove();
     }
 }

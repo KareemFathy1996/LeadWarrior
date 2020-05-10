@@ -15,7 +15,7 @@ class Enemy extends Firing {
         }
         var newX = this.newX();
         var newY = this.newY();
-        while (newX < 0 || newY < 0 || newX + this.width > gameWidth || newY + this.height > gameHeight) {
+        while (!canMoveTo(newX, newY, this.width, this.height)) {
             this.newAngle();
             newX = this.newX();
             newY = this.newY();
@@ -28,5 +28,10 @@ class Enemy extends Firing {
         this.lastAngleTime = new Date();
         this.nextAngleTime = minNewAngleTime + Math.floor(Math.random() * maxNewAngleTime);
         this.angle = Math.floor(Math.random() * 360);
+    }
+
+    remove() {
+        Enemy.numberOfEnemies--;
+        super.remove();
     }
 }
