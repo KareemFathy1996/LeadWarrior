@@ -13,6 +13,8 @@ var keyMap = { 37: false, 65: false, 38: false, 87: false, 39: false, 68: false,
 var bullets;
 var gameHero;
 var enemies;
+var gameWidthRatio;
+var gameHeightRatio;
 
 function initGamePage() {
     // images to preload
@@ -51,6 +53,8 @@ function gameInit() {
     // reset variables
     gameWidth = game.offsetWidth;
     gameHeight = game.offsetHeight;
+    gameWidthRatio = gameWidth / gameInitialWidth;
+    gameHeightRatio = gameHeight / gameInitialHeight;
 
     // map
     game.innerHTML = "";
@@ -84,6 +88,11 @@ function pause() {
 /* loop */
 
 function loop() {
+    gameWidth = game.offsetWidth;
+    gameHeight = game.offsetHeight;
+    gameWidthRatio = gameWidth / gameInitialWidth;
+    gameHeightRatio = gameHeight / gameInitialHeight;
+    console.log(gameWidth + ' ' + gameInitialWidth + ' ' + gameWidthRatio)
     remove();
     move();
     render();
@@ -165,8 +174,8 @@ function fire() {
 function addEnemies() {
     for (var type in map.enemies) {
         for (var j = 0; j < map.enemies[type]; j++) {
-            var x = Math.floor(Math.random() * (gameWidth - enemyWidth));
-            var y = Math.floor(Math.random() * (gameHeight - enemyHeight));
+            var x = Math.floor(Math.random() * (gameInitialWidth - enemyWidth));
+            var y = Math.floor(Math.random() * (gameInitialHeight - enemyHeight));
             var enemy = new Enemy(type, x, y, enemyWidth, enemyHeight);
             enemies.push(enemy);
             addImg(enemy);
@@ -179,10 +188,10 @@ function addImg(object) {
     img.id = object.id;
     img.src = object.src;
     img.style.position = "absolute";
-    img.style.left = object.x + 'px';
-    img.style.top = object.y + 'px';
-    img.style.width = object.width + 'px';
-    img.style.height = object.height + 'px';
+    img.style.left = object.x * gameWidthRatio + 'px';
+    img.style.top = object.y * gameHeightRatio + 'px';
+    img.width = object.width * gameWidthRatio + 'px';
+    img.height = object.height * gameHeightRatio + 'px';
     game.appendChild(img);
 }
 
@@ -193,8 +202,10 @@ function removeImg(id) {
 
 function renderImg(object) {
     var img = document.getElementById(object.id);
-    img.style.left = object.x + 'px';
-    img.style.top = object.y + 'px';
+    img.style.left = object.x * gameWidthRatio + 'px';
+    img.style.top = object.y * gameHeightRatio + 'px';
+    img.width = object.width * gameWidthRatio;
+    img.height = object.height * gameHeightRatio;
 }
 
 function getBgUrl(el) {
@@ -210,16 +221,16 @@ function getBgUrl(el) {
 }
 
 function checkCollision(o1, o2) {
-    if ((o1.x > o2.x && o1.x < o2.x + o2.width && o1.y > o2.y && o1.y < o2.y + o2.height) ||
-        (o1.x + o1.width > o2.x && o1.x + o1.width < o2.x + o2.width && o1.y + o1.height > o2.y && o1.y + o1.height < o2.y + o2.height) ||
-        (o1.x > o2.x && o1.x < o2.x + o2.width && o1.y + o1.height > o2.y && o1.y + o1.height < o2.y + o2.height) ||
-        (o1.x + o1.width > o2.x && o1.x + o1.width < o2.x + o2.width && o1.y > o2.y && o1.y < o2.y + o2.height)
+    if ((o1.x * gameWidthRatio > o2.x * gameWidthRatio && o1.x * gameWidthRatio < o2.x * gameWidthRatio + o2.width * gameWidthRatio && o1.y * gameHeightRatio > o2.y * gameHeightRatio && o1.y * gameHeightRatio < o2.y * gameHeightRatio + o2.height * gameHeightRatio) ||
+        (o1.x * gameWidthRatio + o1.width * gameWidthRatio > o2.x * gameWidthRatio && o1.x * gameWidthRatio + o1.width * gameWidthRatio < o2.x * gameWidthRatio + o2.width * gameWidthRatio && o1.y * gameHeightRatio + o1.height * gameHeightRatio > o2.y * gameHeightRatio && o1.y * gameHeightRatio + o1.height * gameHeightRatio < o2.y * gameHeightRatio + o2.height * gameHeightRatio) ||
+        (o1.x * gameWidthRatio > o2.x * gameWidthRatio && o1.x * gameWidthRatio < o2.x * gameWidthRatio + o2.width * gameWidthRatio && o1.y * gameHeightRatio + o1.height * gameHeightRatio > o2.y * gameHeightRatio && o1.y * gameHeightRatio + o1.height * gameHeightRatio < o2.y * gameHeightRatio + o2.height * gameHeightRatio) ||
+        (o1.x * gameWidthRatio + o1.width * gameWidthRatio > o2.x * gameWidthRatio && o1.x * gameWidthRatio + o1.width * gameWidthRatio < o2.x * gameWidthRatio + o2.width * gameWidthRatio && o1.y * gameHeightRatio > o2.y * gameHeightRatio && o1.y * gameHeightRatio < o2.y * gameHeightRatio + o2.height * gameHeightRatio)
 
         ||
-        (o2.x > o1.x && o2.x < o1.x + o1.width && o2.y > o1.y && o2.y < o1.y + o1.height) ||
-        (o2.x + o2.width > o1.x && o2.x + o2.width < o1.x + o1.width && o2.y + o2.height > o1.y && o2.y + o2.height < o1.y + o1.height) ||
-        (o2.x > o1.x && o2.x < o1.x + o1.width && o2.y + o2.height > o1.y && o2.y + o2.height < o1.y + o1.height) ||
-        (o2.x + o2.width > o1.x && o2.x + o2.width < o1.x + o1.width && o2.y > o1.y && o2.y < o1.y + o1.height)
+        (o2.x * gameWidthRatio > o1.x * gameWidthRatio && o2.x * gameWidthRatio < o1.x * gameWidthRatio + o1.width * gameWidthRatio && o2.y * gameHeightRatio > o1.y * gameHeightRatio && o2.y * gameHeightRatio < o1.y * gameHeightRatio + o1.height * gameHeightRatio) ||
+        (o2.x * gameWidthRatio + o2.width * gameWidthRatio > o1.x * gameWidthRatio && o2.x * gameWidthRatio + o2.width * gameWidthRatio < o1.x * gameWidthRatio + o1.width * gameWidthRatio && o2.y * gameHeightRatio + o2.height * gameHeightRatio > o1.y * gameHeightRatio && o2.y * gameHeightRatio + o2.height * gameHeightRatio < o1.y * gameHeightRatio + o1.height * gameHeightRatio) ||
+        (o2.x * gameWidthRatio > o1.x * gameWidthRatio && o2.x * gameWidthRatio < o1.x * gameWidthRatio + o1.width * gameWidthRatio && o2.y * gameHeightRatio + o2.height * gameHeightRatio > o1.y * gameHeightRatio && o2.y * gameHeightRatio + o2.height * gameHeightRatio < o1.y * gameHeightRatio + o1.height * gameHeightRatio) ||
+        (o2.x * gameWidthRatio + o2.width * gameWidthRatio > o1.x * gameWidthRatio && o2.x * gameWidthRatio + o2.width * gameWidthRatio < o1.x * gameWidthRatio + o1.width * gameWidthRatio && o2.y * gameHeightRatio > o1.y * gameHeightRatio && o2.y * gameHeightRatio < o1.y * gameHeightRatio + o1.height * gameHeightRatio)
     ) {
         return true;
     }
@@ -275,7 +286,7 @@ game.addEventListener('keyup', keyEventHandler);
 
 /* used outside */
 function canMoveTo(x, y, width, height) {
-    if (x < 0 || y < 0 || x + width > gameWidth || y + height > gameHeight)
+    if (x < 0 || y < 0 || x * gameWidthRatio + width * gameWidthRatio > gameInitialWidth * gameWidthRatio || y * gameHeightRatio + height * gameHeightRatio > gameInitialHeight * gameHeightRatio)
         return false;
     return true;
 }

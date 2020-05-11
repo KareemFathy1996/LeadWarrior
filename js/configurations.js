@@ -18,3 +18,6 @@ var bulletDamage = 10;
 
 var minNewAngleTime = 500;
 var maxNewAngleTime = 1500;
+
+var gameInitialWidth = 1900;
+var gameInitialHeight = 800;

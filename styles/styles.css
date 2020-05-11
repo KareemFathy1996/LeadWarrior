@@ -17,54 +17,52 @@
 
 /* backbone */
 
+html,
 body {
     background-color: rgba(233, 233, 233, 0.658);
+    margin: 0;
+    height: 100%;
 }
 
 #game-window {
     background-color: rgb(180, 210, 230);
-    width: 880px;
-    height: 900px;
-    margin: auto;
+    width: 100%;
+    height: 100%;
+    margin: 0;
     overflow: auto;
-    border: rgba(231, 230, 216, 0.295) 2.5px solid;
-    border-radius: 5px;
 }
 
 #game-menu {
     background-color: rgb(95, 98, 126);
-    width: 860px;
-    height: 100px;
+    overflow: auto;
+    height: 10%;
     border: rgb(48, 48, 18) 2.5px solid;
     border-radius: 5px;
+    margin: 10px;
+}
+
+#game-menu-title {
     margin: auto;
-    margin-top: 10px;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 8vh;
+    color: rgb(0, 0, 0);
+    text-align: center;
 }
 
 #game-container {
     background-color: rgb(95, 98, 126);
-    width: 860px;
-    height: 760px;
+    overflow: auto;
+    height: calc(90% - 40px);
     border: rgb(48, 48, 18) 2.5px solid;
     border-radius: 5px;
-    margin: auto;
-    margin-top: 10px;
+    margin: 10px;
     position: relative;
 }
 
-#game-menu-title {
-    margin: 23px auto;
-    width: 250px;
-    font-family: Impact, Charcoal, sans-serif;
-    font-size: 40px;
-    color: rgb(0, 0, 0);
-    text-shadow: -3px 0 rgb(130, 138, 161), 0 0px rgb(130, 138, 161), 0px 0 rgb(130, 138, 161), 0 -3px rgb(130, 138, 161);
-}
-
 #prev {
-    width: 80px;
-    height: 80px;
-    margin: 10px;
+    width: 8vh;
+    height: 8vh;
+    margin: 1vh;
     display: none;
 }
 
