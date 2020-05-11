@@ -286,7 +286,7 @@ game.addEventListener('keyup', keyEventHandler);
 
 /* used outside */
 function canMoveTo(x, y, width, height) {
-    if (x < 0 || y < 0 || x * gameWidthRatio + width * gameWidthRatio > gameInitialWidth * gameWidthRatio || y * gameHeightRatio + height * gameHeightRatio > gameInitialHeight * gameHeightRatio)
+    if (x < 0 || y < 0 || Math.ceil(x * gameWidthRatio) + Math.ceil(width * gameWidthRatio) > gameWidth || Math.ceil(y * gameHeightRatio) + Math.ceil(height * gameHeightRatio) > gameHeight)
         return false;
     return true;
 }
