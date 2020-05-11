@@ -51,7 +51,6 @@ body {
 
 #game-container {
     background-color: rgb(95, 98, 126);
-    overflow: auto;
     height: calc(90% - 40px);
     border: rgb(48, 48, 18) 2.5px solid;
     border-radius: 5px;
@@ -75,24 +74,25 @@ body {
 /* main menu */
 
 #main-menu {
-    width: 300px;
+    width: 100%;
+    height: 94%;
+    max-width: 250px;
+    max-height: 300px;
     margin: auto;
-    padding: 10px;
-    margin-top: 100px;
+    margin-top: 1%;
     background-color: rgba(12, 3, 3, 0.158);
     border: rgb(48, 48, 30) 2.5px solid;
     border-radius: 5px;
 }
 
 .main-menu-button {
-    width: 200px;
-    height: 50px;
+    width: 96%;
+    height: 16%;
     border: rgb(48, 48, 30) 2.5px solid;
     border-radius: 5px;
-    margin: auto;
     background-color: rgb(187, 107, 93);
-    text-align: center;
-    line-height: 50px;
+    font-size: 4vh;
+    margin: 2%;
 }
 
 .main-menu-button:hover {
