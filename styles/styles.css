@@ -27,7 +27,7 @@ body {
 #game-menu-title {
     margin: auto;
     font-family: Impact, Charcoal, sans-serif;
-    font-size: 8vh;
+    font-size: 4vw;
     color: rgb(0, 0, 0);
     text-align: center;
 }
@@ -127,7 +127,7 @@ body {
 #hero-name-img-div {
     margin: 1%;
     text-align: center;
-    width: calc(78% - 8px);
+    width: calc(77% - 8px);
     height: 98%;
     display: inline-block;
 }
