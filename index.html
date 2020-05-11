@@ -12,7 +12,7 @@
 <body>
     <div id="game-window">
         <div id="game-menu">
-            <img class="float-left" id="prev" src="assets/accessories/back1.png" onmouseover="this.src='assets/accessories/back2.png';" onmouseout="this.src='assets/accessories/back1.png';">
+            <img id="prev" src="assets/accessories/back1.png" onmouseover="this.src='assets/accessories/back2.png';" onmouseout="this.src='assets/accessories/back1.png';">
             <div id="game-menu-title">LEAD WARRIOR</div>
         </div>
         <div id="game-container">
@@ -31,13 +31,17 @@
             </div>
 
             <div id="room">
-                <div class="row" id="hero-nav-div">
-                    <img class="float-left nav-arrow" src="assets/accessories/prev.png" onclick="preHero()">
-                    <div class="float-left" id="hero-name-img-div" class="column">
+                <div id="hero-nav-div">
+                    <div class="nav-arrow-div">
+                        <img class="nav-arrow-img" src="assets/accessories/prev.png" onclick="preHero()">
+                    </div>
+                    <div id="hero-name-img-div" class="column">
                         <div id="choose-hero-name">Hero Name</div>
                         <img id="choose-hero-img" src="">
                     </div>
-                    <img class="float-left nav-arrow" src="assets/accessories/next.png" onclick="nextHero()">
+                    <div class="nav-arrow-div">
+                        <img class="nav-arrow-img" src="assets/accessories/next.png" onclick="nextHero()">
+                    </div>
                 </div>
                 <div id="stats-div">
                     <table>
@@ -55,9 +59,7 @@
                         </tr>
                     </table>
                 </div>
-                <div id="room-start" onclick="changePage('game')">
-                    Start Game
-                </div>
+                <button id="room-start" onclick="changePage('game')">Start Game</button>
             </div>
 
             <div id="game" tabindex="-1">

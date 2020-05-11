@@ -1,20 +1,3 @@
-/* generic classes */
-
-.float-left {
-    float: left;
-}
-
-.float-right {
-    float: right;
-}
-
-.row::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-
 /* backbone */
 
 html,
@@ -63,6 +46,7 @@ body {
     height: 8vh;
     margin: 1vh;
     display: none;
+    float: left;
 }
 
 #prev:hover {
@@ -104,61 +88,84 @@ body {
 /* room */
 
 #room {
+    width: 98%;
+    max-width: 500px;
+    height: 100%;
+    max-height: 500px;
     margin: auto;
-    padding: 10px;
-    width: fit-content;
-    margin-top: 100px;
+    margin-top: 1%;
     background-color: rgba(12, 3, 3, 0.158);
     border: rgb(48, 48, 30) 2.5px solid;
     border-radius: 5px;
     display: none;
 }
 
-.nav-arrow {
-    width: 70px;
-    height: 336px;
-    border: rgb(48, 48, 30) 2.5px solid;
-    border-radius: 5px;
+#hero-nav-div {
+    width: 100%;
+    height: 70%;
 }
 
-.nav-arrow:hover {
+.nav-arrow-div {
+    width: calc(8% - 5px);
+    height: calc(98% - 5px);
+    border: rgb(48, 48, 30) 2.5px solid;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 1%;
+}
+
+.nav-arrow-img {
+    width: 100%;
+    height: 100%;
+}
+
+.nav-arrow-div:hover {
     background-color: rgb(95, 98, 126);
     cursor: pointer;
 }
 
 #hero-name-img-div {
-    margin: 0px 10px;
+    margin: 1%;
     text-align: center;
+    width: calc(78% - 8px);
+    height: 98%;
+    display: inline-block;
 }
 
 #choose-hero-img {
-    width: 300px;
-    height: 300px;
+    width: calc(100% - 5px);
+    height: calc(90% - 5px);
     border-radius: 10px;
     border: rgb(48, 48, 30) 2.5px solid;
 }
 
 #choose-hero-name {
+    height: 10%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: rgb(154, 219, 152);
     font-weight: bold;
-    font-size: 30px;
+    font-size: 3vh;
 }
 
-#stats-div table {
-    height: 50px;
-    padding: 10px;
-    width: 100%;
-    margin: 10px 0px;
-    background-color: rgb(154, 219, 152);
+#stats-div {
+    height: calc(18% - 5px);
+    width: calc(98% - 5px);
+    margin: 1%;
     border: rgb(48, 48, 30) 2.5px solid;
     border-radius: 5px;
 }
 
+#stats-div table {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(154, 219, 152);
+}
+
 #room-start {
-    height: 55px;
+    height: calc(8%);
+    width: calc(98%);
+    margin: 1%;
     text-align: center;
-    line-height: 55px;
     background-color: rgb(187, 107, 93);
     border: rgb(48, 48, 30) 2.5px solid;
     border-radius: 5px;
