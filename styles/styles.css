@@ -209,40 +209,14 @@ body {
 #loading-screen {
     z-index: -1;
     position: absolute;
-    background-color: rgb(95, 23, 95);
+    background-color: rgb(29, 23, 29);
     width: 100%;
     height: 100%;
+    text-align: center;
 }
 
-#loader {
-    margin: auto;
-    margin-top: 250px;
-    border: 16px solid #857e7e;
-    border-radius: 50%;
-    border-top: 16px solid #255d83;
-    width: 120px;
-    height: 120px;
-    -webkit-animation: spin 2s linear infinite;
-    /* Safari */
-    animation: spin 2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-    /* Safari */
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
-}
-
-@keyframes spin {
-    /* Safari */
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+#loading-screen img {
+    margin-top: 10%;
+    width: 10%;
+    height: 10%;
 }
