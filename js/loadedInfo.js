@@ -4,8 +4,8 @@ var bulletsTypes = { // name, width, height, maxHealth, movementSpeed
 };
 
 var enemiesTypes = { // name, width, height, maxHealth, movementSpeed, attackSpeed, numOfBullets, bulletType, bulletDamage, touchDamage
-    'meow': new EnemyType('Meow', enemyWidth, enemyHeight, enemyHealth, enemyMovementSpeed, enemyAttackSpeed, 1, bulletsTypes['enemy1'], bulletDamage, 0.1),
-    'zubat': new EnemyType('Zubat', enemyWidth, enemyHeight, enemyHealth, enemyMovementSpeed, enemyAttackSpeed, 1, bulletsTypes['enemy1'], bulletDamage, 0.1),
+    'meow': new EnemyType('meow', enemyWidth, enemyHeight, enemyHealth, enemyMovementSpeed, enemyAttackSpeed, 1, bulletsTypes['enemy1'], bulletDamage, 0.1),
+    'zubat': new EnemyType('zubat', enemyWidth, enemyHeight, enemyHealth, enemyMovementSpeed, enemyAttackSpeed, 1, bulletsTypes['enemy1'], bulletDamage, 0.1),
 };
 
 var heroesTypes = [ //name, width, height, maxHealth, movementSpeed, attackSpeed, numOfBullets, bulletType, bulletDamage, touchDamage
