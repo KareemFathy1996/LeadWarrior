@@ -6,5 +6,4 @@ class Map {
         this.enemies = enemies;
     }
 }
-
 var map;

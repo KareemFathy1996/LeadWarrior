@@ -1,12 +1,14 @@
 class Enemy extends Firing {
 
     constructor(enemyType, x, y) {
-        super(true, 0, enemyType.movementSpeed, enemyType.src, x, y, enemyType.width, enemyType.height, enemyType.touchDamage, enemyType.maxHealth, enemyType.name,
-            enemyType.attackSpeed, enemyType.numOfBullets, true, enemyType.bulletDamage, enemyType.bulletType);
+        super(enemyType, true, x, y, 0, enemyType.touchDamage,
+            true);
 
         this.newAngle();
     }
 
+    // get new angle after min~max new angle time
+    // keep getting new position till enemy can move to it.
     move() {
         if (!this.moving) return;
         if (new Date() - this.lastAngleTime >= this.nextAngleTime) {

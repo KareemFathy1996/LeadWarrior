@@ -5,25 +5,29 @@ map  from map.js
 */
 
 // used variables
-var game = document.getElementById("game")
+var game = document.getElementById("game");
 var loopIntervalId;
+
 var gameWidth;
 var gameHeight;
-var keyMap = { 37: false, 65: false, 38: false, 87: false, 39: false, 68: false, 40: false, 83: false };
-var bullets;
-var gameHero;
-var enemies;
 var gameWidthRatio;
 var gameHeightRatio;
 
+var gameHero;
+var enemies;
+var bullets;
+
+var keyMap = { 37: false, 65: false, 38: false, 87: false, 39: false, 68: false, 40: false, 83: false };
+
+// preload images then initiate game
 function initGamePage() {
-    // images to preload
     var images = [];
     images.push(map.src);
     images.push(heroType.src);
     images.push(heroType.bulletType.src);
-    for (var type in map.enemies) {
-        images.push('assets/enemies/' + type + '/src.png');
+    for (var i = 0; i < map.enemies.length; i++) {
+        images.push(map.enemies[i].type.src);
+        images.push(map.enemies[i].type.bulletType.src);
     }
 
     var preloadDone = function() {
@@ -36,6 +40,7 @@ function initGamePage() {
     preloadImages(images, preloadDone);
 }
 
+// make game div visible
 function showGame() {
     document.getElementById("game").style.display = "block";
     document.getElementById("prev").style.display = "block";
@@ -44,6 +49,7 @@ function showGame() {
     };
 }
 
+// make game div hidden and stop the game
 function hideGame() {
     document.getElementById("game").style.display = "none";
     pause();
@@ -85,10 +91,13 @@ function pause() {
 /* loop */
 
 function loop() {
+    // check if game size changed
     gameWidth = game.offsetWidth;
     gameHeight = game.offsetHeight;
     gameWidthRatio = gameWidth / gameInitialWidth;
     gameHeightRatio = gameHeight / gameInitialHeight;
+
+    // game logic
     render();
     move();
     collisionDetection();
@@ -97,6 +106,7 @@ function loop() {
     updateGameStatus();
 }
 
+// remove all objects that are marked to remove
 function remove() {
     if (gameHero.removed) {
         removeImg(gameHero.id);
@@ -133,6 +143,7 @@ function render() {
         renderImg(bullets[i]);
 }
 
+// check if enmies' bullets hit hero or vice versa
 function collisionDetection() {
     for (var i = 0; i < bullets.length; i++) {
         var bullet = bullets[i];
@@ -151,6 +162,7 @@ function collisionDetection() {
     }
 }
 
+// change status in menu & check if game won/lost
 function updateGameStatus() {
     if (gameHero.health <= 0)
         gameLost();
@@ -168,17 +180,20 @@ function fire() {
 /* helping functions */
 
 function addEnemies() {
-    for (var type in map.enemies) {
-        for (var j = 0; j < map.enemies[type]; j++) {
+    for (var i = 0; i < map.enemies.length; i++) {
+        var type = map.enemies[i].type;
+        var num = map.enemies[i].number;
+        for (var j = 0; j < num; j++) {
             var x = Math.floor(Math.random() * (gameInitialWidth - enemyWidth));
             var y = Math.floor(Math.random() * (gameInitialHeight - enemyHeight));
-            var enemy = new Enemy(enemiesTypes[type], x, y);
+            var enemy = new Enemy(type, x, y);
             enemies.push(enemy);
             addImg(enemy);
         }
     }
 }
 
+// add img to game div
 function addImg(object) {
     var img = document.createElement('img');
     img.id = object.id;
@@ -191,11 +206,13 @@ function addImg(object) {
     game.appendChild(img);
 }
 
+// remove img from game div
 function removeImg(id) {
     var img = document.getElementById(id);
     img.parentNode.removeChild(img);
 }
 
+// change position of img in game div
 function renderImg(object) {
     var img = document.getElementById(object.id);
     img.style.left = object.x * gameWidthRatio + 'px';
@@ -204,6 +221,7 @@ function renderImg(object) {
     img.height = object.height * gameHeightRatio;
 }
 
+// get background image src to preload
 function getBgUrl(el) {
     var bg = "";
     if (el.currentStyle) { // IE
@@ -216,6 +234,7 @@ function getBgUrl(el) {
     return bg.replace(/url\(['"]?(.*?)['"]?\)/i, "$1");
 }
 
+// check if overlap happened between two objects
 function checkCollision(o1, o2) {
     if ((o1.x * gameWidthRatio > o2.x * gameWidthRatio && o1.x * gameWidthRatio < o2.x * gameWidthRatio + o2.width * gameWidthRatio && o1.y * gameHeightRatio > o2.y * gameHeightRatio && o1.y * gameHeightRatio < o2.y * gameHeightRatio + o2.height * gameHeightRatio) ||
         (o1.x * gameWidthRatio + o1.width * gameWidthRatio > o2.x * gameWidthRatio && o1.x * gameWidthRatio + o1.width * gameWidthRatio < o2.x * gameWidthRatio + o2.width * gameWidthRatio && o1.y * gameHeightRatio + o1.height * gameHeightRatio > o2.y * gameHeightRatio && o1.y * gameHeightRatio + o1.height * gameHeightRatio < o2.y * gameHeightRatio + o2.height * gameHeightRatio) ||
@@ -232,6 +251,7 @@ function checkCollision(o1, o2) {
     }
 }
 
+// handle the collision of two objects
 function collisionDetected(object1, object2) {
     var touchDamage1 = object1.touchDamage;
     var touchDamage2 = object2.touchDamage;
@@ -239,17 +259,20 @@ function collisionDetected(object1, object2) {
     object2.hitBy(touchDamage1);
 }
 
+// show game won screen then stop game
 function gameWon() {
     pause();
     alert('game won');
 }
 
+// show game lost screen then stop game
 function gameLost() {
     pause();
     alert('game lost');
 }
 
 /* listener */
+// listen for movement and fire keys (arrows, wasd, space & enter)
 function keyEventHandler(e) {
     e = e || event;
     keyMap[e.keyCode] = e.type == 'keydown';
@@ -285,4 +308,9 @@ function canMoveTo(x, y, width, height) {
     if (x < 0 || y < 0 || Math.ceil(x * gameWidthRatio) + Math.ceil(width * gameWidthRatio) > gameWidth || Math.ceil(y * gameHeightRatio) + Math.ceil(height * gameHeightRatio) > gameHeight)
         return false;
     return true;
+}
+
+function addBullet(bullet) {
+    bullets.push(bullet);
+    addImg(bullet);
 }

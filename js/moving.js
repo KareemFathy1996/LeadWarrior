@@ -10,19 +10,19 @@ function getId() {
 }
 
 class Moving {
-    constructor(moving, angle, movementSpeed, src, x, y, width, height, touchDamage, maxHealth, name) {
+    constructor(type, moving, x, y, angle, touchDamage) {
         this.id = getId();
+        this.name = type.name;
+        this.src = type.src;
+        this.width = type.width;
+        this.height = type.height;
+        this.maxHealth = type.maxHealth;
         this.moving = moving;
-        this.angle = angle;
-        this.movementSpeed = movementSpeed;
-        this.src = src;
+        this.movementSpeed = type.movementSpeed;
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
+        this.angle = angle;
         this.touchDamage = touchDamage;
-        this.maxHealth = maxHealth;
-        this.name = name;
 
         this.health = this.maxHealth;
         this.removed = false;
@@ -46,6 +46,7 @@ class Moving {
         this.y = this.newY();
     }
 
+    // apply damage from object
     hitBy(touchDamage) {
         this.health -= touchDamage;
         if (this.health <= 0)

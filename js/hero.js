@@ -1,9 +1,10 @@
 class Hero extends Firing {
     constructor(heroType, x, y) {
-        super(false, 45, heroType.movementSpeed, heroType.src, x, y, heroType.width, heroType.height, heroType.touchDamage, heroType.maxHealth, heroType.name,
-            heroType.attackSpeed, heroType.numOfBullets, false, heroType.bulletDamage, heroType.bulletType)
+        super(heroType, false, x, y, 45, heroType.touchDamage,
+            false);
     }
 
+    // get new position. if hero can move to the new position move else do nothing
     move() {
         if (this.moving) {
             var newX = this.newX();

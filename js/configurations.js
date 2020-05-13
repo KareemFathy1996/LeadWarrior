@@ -1,3 +1,5 @@
+// the only place to edit to affect gameplay
+
 var heroWidth = 50;
 var heroHeight = 50;
 
