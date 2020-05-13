@@ -1,11 +1,26 @@
-class Hero extends Firing {
-    constructor(room, src, backgroundImage, name, maxHealth, attackSpeed, movementSpeed, numOfBullets, bulletType) {
-        super(false, 45, movementSpeed, src, 0, 0, heroWidth, heroHeight, 0.1, maxHealth,
-            attackSpeed, numOfBullets, false, name, bulletDamage, bulletType);
-
+class HeroType {
+    constructor(room, src, backgroundImage, name, maxHealth, attackSpeed, movementSpeed, numOfBullets, bulletType, width, height, bulletDamage) {
         this.room = room;
+        this.src = src;
         this.backgroundImage = backgroundImage;
+        this.name = name;
+        this.maxHealth = maxHealth;
+        this.attackSpeed = attackSpeed;
+        this.movementSpeed = movementSpeed;
+        this.numOfBullets = numOfBullets;
+        this.bulletType = bulletType;
+        this.width = width;
+        this.height = height;
+        this.bulletDamage = bulletDamage;
     }
+}
+
+class Hero extends Firing {
+    constructor(heroType) {
+        super(false, 45, heroType.movementSpeed, heroType.src, 0, 0, heroType.width, heroType.height, 0.1, heroType.maxHealth,
+            heroType.attackSpeed, heroType.numOfBullets, false, heroType.name, heroType.bulletDamage, heroType.bulletType)
+    }
+
     move() {
         if (this.moving) {
             var newX = this.newX();

@@ -20,7 +20,8 @@ function initGamePage() {
     // images to preload
     var images = [];
     images.push(map.src);
-    images.push(hero.src);
+    images.push(heroType.src);
+    images.push(heroType.bulletType.src);
     for (var type in map.enemies) {
         images.push('assets/enemies/' + type + '/src.png');
     }
@@ -61,12 +62,9 @@ function gameInit() {
     game.style.backgroundImage = "url('" + map.src + "')";
 
     // hero
-    gameHero = new Hero(hero.room, hero.src, hero.backgroundImage, hero.name, hero.maxHealth, hero.attackSpeed, hero.movementSpeed, hero.numOfBullets);
+    gameHero = new Hero(heroType);
     gameHero.x = map.startX;
     gameHero.y = map.startY;
-    gameHero.health = gameHero.maxHealth;
-    gameHero.removed = false;
-    gameHero.bulletType = hero.bulletType
     addImg(gameHero);
 
     // enemies
