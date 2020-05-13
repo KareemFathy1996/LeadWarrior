@@ -1,9 +1,21 @@
-class Bullet extends Moving {
-    constructor(fireType, src, x, y, angle) {
-        super(true, angle, bulletMovementSpeed, src, x, y, bulletWidth, bulletHeight, bulletDamage, 0);
-
-        this.fireType = fireType;
+class BulletType {
+    constructor(fireSrc, src, movementSpeed, width, height) {
+        this.fireSrc = fireSrc;
+        this.src = src;
+        this.movementSpeed = movementSpeed;
+        this.width = width;
+        this.height = height;
+        this.maxHealth = 0;
     }
+}
+
+class Bullet extends Moving {
+    constructor(bulletType, angle, x, y, touchDamage) {
+        super(true, angle, bulletType.movementSpeed, bulletType.src, x, y, bulletType.width, bulletType.height, touchDamage, bulletType.maxHealth);
+
+        this.fireSrc = bulletType.fireSrc;
+    }
+
     move() {
         var newX = this.newX();
         var newY = this.newY();

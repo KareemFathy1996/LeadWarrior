@@ -66,6 +66,7 @@ function gameInit() {
     gameHero.y = map.startY;
     gameHero.health = gameHero.maxHealth;
     gameHero.removed = false;
+    gameHero.bulletType = hero.bulletType
     addImg(gameHero);
 
     // enemies
@@ -92,13 +93,12 @@ function loop() {
     gameHeight = game.offsetHeight;
     gameWidthRatio = gameWidth / gameInitialWidth;
     gameHeightRatio = gameHeight / gameInitialHeight;
-    console.log(gameWidth + ' ' + gameInitialWidth + ' ' + gameWidthRatio)
-    remove();
-    move();
     render();
+    move();
     collisionDetection();
-    updateGameStatus();
+    remove();
     fire();
+    updateGameStatus();
 }
 
 function remove() {
@@ -140,10 +140,10 @@ function render() {
 function collisionDetection() {
     for (var i = 0; i < bullets.length; i++) {
         var bullet = bullets[i];
-        if (bullet.fireType == "Enemy" && checkCollision(bullet, gameHero)) {
+        if (bullet.fireSrc == "enemy1" && checkCollision(bullet, gameHero)) {
             collisionDetected(bullet, gameHero);
             continue;
-        } else if (bullet.fireType == "Hero") {
+        } else if (bullet.fireSrc == "hero") {
             for (var j = 0; j < enemies.length; j++) {
                 var enemy = enemies[j];
                 if (checkCollision(bullet, enemy)) {
@@ -158,7 +158,7 @@ function collisionDetection() {
 function updateGameStatus() {
     if (gameHero.health <= 0)
         gameLost();
-    if (Enemy.numberOfEnemies == 0)
+    if (enemies.length == 0)
         gameWon();
 }
 
@@ -176,7 +176,7 @@ function addEnemies() {
         for (var j = 0; j < map.enemies[type]; j++) {
             var x = Math.floor(Math.random() * (gameInitialWidth - enemyWidth));
             var y = Math.floor(Math.random() * (gameInitialHeight - enemyHeight));
-            var enemy = new Enemy(type, x, y, enemyWidth, enemyHeight);
+            var enemy = new Enemy(enemiesTypes[type], x, y);
             enemies.push(enemy);
             addImg(enemy);
         }
@@ -244,13 +244,13 @@ function collisionDetected(object1, object2) {
 }
 
 function gameWon() {
-    alert('game won');
     pause();
+    alert('game won');
 }
 
 function gameLost() {
-    alert('game lost');
     pause();
+    alert('game lost');
 }
 
 /* listener */
