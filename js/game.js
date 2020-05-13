@@ -43,7 +43,9 @@ function initGamePage() {
 // make game div visible
 function showGame() {
     document.getElementById("game").style.display = "block";
-    document.getElementById("prev").style.display = "block";
+    document.getElementById("prev").style.display = "inline-block";
+    document.getElementById("game-menu-stats").style.display = "inline-block";
+    document.getElementById("game-menu-statistics").style.display = "inline-block";
     document.getElementById("prev").onclick = function() {
         changePage("room");
     };
@@ -52,6 +54,9 @@ function showGame() {
 // make game div hidden and stop the game
 function hideGame() {
     document.getElementById("game").style.display = "none";
+    document.getElementById("prev").style.display = "none";
+    document.getElementById("game-menu-stats").style.display = "none";
+    document.getElementById("game-menu-statistics").style.display = "none";
     pause();
 }
 

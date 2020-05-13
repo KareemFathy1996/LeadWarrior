@@ -17,7 +17,7 @@ function initRoomPage() {
 function showRoom() {
     updateHero();
     document.getElementById("room").style.display = "block";
-    document.getElementById("prev").style.display = "block";
+    document.getElementById("prev").style.display = "inline-block";
     document.getElementById("prev").onclick = function() {
         changePage("main-menu");
     }

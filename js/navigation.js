@@ -2,11 +2,13 @@ var currentPage = "main-menu";
 
 function showMainMenuPage() {
     document.getElementById("main-menu").style.display = "block";
+    document.getElementById("game-menu-title").style.display = "block";
     removeLoadingScreen();
 }
 
 function hideMainMenu() {
     document.getElementById("main-menu").style.display = "none";
+    document.getElementById("game-menu-title").style.display = "none";
 }
 
 function changePage(next) {

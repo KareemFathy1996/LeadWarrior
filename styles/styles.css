@@ -25,11 +25,43 @@ body {
 }
 
 #game-menu-title {
-    margin: auto;
     font-family: Impact, Charcoal, sans-serif;
     font-size: 4vw;
     color: rgb(0, 0, 0);
     text-align: center;
+    width: 100%;
+}
+
+#game-menu-stats {
+    width: calc(47.5% - 16px);
+    height: calc(98% - 13.5px);
+    margin: 3px;
+    background-color: rgb(154, 219, 152);
+    display: none;
+    border: rgb(48, 48, 30) 2.5px solid;
+    border-radius: 5px;
+}
+
+#game-menu-statistics {
+    width: calc(47.5% - 16px);
+    height: calc(98% - 13.5px);
+    margin: 3px;
+    background-color: rgb(180, 210, 230);
+    display: none;
+    border: rgb(48, 48, 30) 2.5px solid;
+    border-radius: 5px;
+}
+
+#prev {
+    width: calc(5% - 11px);
+    height: calc(98% - 8.5px);
+    margin: 3px;
+    display: none;
+}
+
+#prev:hover {
+    cursor: pointer;
+    src: "../assets/back2.png";
 }
 
 #game-container {
@@ -39,19 +71,6 @@ body {
     border-radius: 5px;
     margin: 10px;
     position: relative;
-}
-
-#prev {
-    width: 8vh;
-    height: 8vh;
-    margin: 1vh;
-    display: none;
-    float: left;
-}
-
-#prev:hover {
-    cursor: pointer;
-    src: "../assets/back2.png";
 }
 
 
@@ -176,19 +195,19 @@ body {
     background-color: rgb(187, 50, 25);
 }
 
-.td1 {
+#stats-div table .td1 {
     width: 35%;
 }
 
-.td2 {
+#stats-div table .td2 {
     width: 15%;
 }
 
-.td3 {
+#stats-div table .td3 {
     width: 35%;
 }
 
-.td4 {
+#stats-div table .td4 {
     width: 15%;
 }
 
@@ -208,6 +227,32 @@ body {
     top: -4px;
     height: 4px;
     background-color: red;
+}
+
+#game-menu-stats table,
+#game-menu-statistics table {
+    width: 100%;
+    height: 100%;
+}
+
+#game-menu-stats table .td1,
+#game-menu-statistics table .td1 {
+    width: 40%;
+}
+
+#game-menu-stats table .td2,
+#game-menu-statistics table .td2 {
+    width: 10%;
+}
+
+#game-menu-stats table .td3,
+#game-menu-statistics table .td3 {
+    width: 40%;
+}
+
+#game-menu-stats table .td4,
+#game-menu-statistics table .td4 {
+    width: 10%;
 }
 
 
