@@ -195,30 +195,59 @@ function addEnemies() {
 
 // add img to game div
 function addImg(object) {
+
+    var div = document.createElement('div');
+    div.id = object.id;
+    div.style.position = "absolute";
+    div.style.left = object.x * gameWidthRatio + 'px';
+    div.style.top = object.y * gameHeightRatio + 'px';
+    div.classList.add('object-div');
+
+    if (!(object instanceof Bullet)) {
+        var progress = document.createElement('progress');
+        progress.classList.add('health-progress');
+        progress.id = 'progress' + object.id;
+        progress.max = object.maxHealth;
+        progress.value = object.health;
+        progress.style.width = object.width * gameWidthRatio + 'px';
+        div.appendChild(progress);
+    }
+
     var img = document.createElement('img');
-    img.id = object.id;
+    img.id = 'img' + object.id;
     img.src = object.src;
-    img.style.position = "absolute";
-    img.style.left = object.x * gameWidthRatio + 'px';
-    img.style.top = object.y * gameHeightRatio + 'px';
-    img.width = object.width * gameWidthRatio + 'px';
-    img.height = object.height * gameHeightRatio + 'px';
-    game.appendChild(img);
+    img.style.width = object.width * gameWidthRatio + 'px';
+    img.style.height = object.height * gameHeightRatio + 'px';
+    div.appendChild(img);
+
+    game.appendChild(div);
 }
 
 // remove img from game div
 function removeImg(id) {
-    var img = document.getElementById(id);
-    img.parentNode.removeChild(img);
+    var div = document.getElementById(id);
+    div.parentNode.removeChild(div);
 }
 
 // change position of img in game div
 function renderImg(object) {
-    var img = document.getElementById(object.id);
-    img.style.left = object.x * gameWidthRatio + 'px';
-    img.style.top = object.y * gameHeightRatio + 'px';
-    img.width = object.width * gameWidthRatio;
-    img.height = object.height * gameHeightRatio;
+
+    var div = document.getElementById(object.id);
+    div.style.left = object.x * gameWidthRatio + 'px';
+    div.style.top = object.y * gameHeightRatio + 'px';
+
+    if (!(object instanceof Bullet)) {
+        var progress = document.getElementById('progress' + object.id);
+        progress.classList.add('health-progress');
+        progress.id = 'progress' + object.id;
+        progress.max = object.maxHealth;
+        progress.value = object.health;
+        progress.style.width = object.width * gameWidthRatio + 'px';
+    }
+
+    var img = document.getElementById('img' + object.id);
+    img.style.width = object.width * gameWidthRatio + 'px';
+    img.style.height = object.height * gameHeightRatio + 'px';
 }
 
 // get background image src to preload

@@ -203,6 +203,13 @@ body {
     position: relative;
 }
 
+.health-progress {
+    position: absolute;
+    top: -4px;
+    height: 4px;
+    background-color: red;
+}
+
 
 /* loader */
 
