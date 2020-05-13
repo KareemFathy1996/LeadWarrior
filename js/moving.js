@@ -10,7 +10,7 @@ function getId() {
 }
 
 class Moving {
-    constructor(moving, angle, movementSpeed, src, x, y, width, height, touchDamage, maxHealth) {
+    constructor(moving, angle, movementSpeed, src, x, y, width, height, touchDamage, maxHealth, name) {
         this.id = getId();
         this.moving = moving;
         this.angle = angle;
@@ -22,6 +22,7 @@ class Moving {
         this.height = height;
         this.touchDamage = touchDamage;
         this.maxHealth = maxHealth;
+        this.name = name;
 
         this.health = this.maxHealth;
         this.removed = false;
@@ -29,6 +30,7 @@ class Moving {
 
     remove() {
         this.removed = true;
+        freeIds.push(this.id);
     }
 
     newX() {

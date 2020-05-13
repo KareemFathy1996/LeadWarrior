@@ -1,13 +1,12 @@
 class Firing extends Moving {
-    constructor(moving, angle, movementSpeed, src, x, y, width, height, touchDamage, maxHealth,
-        attackSpeed, numOfBullets, firing, name, damage, bulletType) {
+    constructor(moving, angle, movementSpeed, src, x, y, width, height, touchDamage, maxHealth, name,
+        attackSpeed, numOfBullets, firing, damage, bulletType) {
 
-        super(moving, angle, movementSpeed, src, x, y, width, height, touchDamage, maxHealth);
+        super(moving, angle, movementSpeed, src, x, y, width, height, touchDamage, maxHealth, name);
 
         this.attackSpeed = attackSpeed;
         this.numOfBullets = numOfBullets;
         this.firing = firing;
-        this.name = name;
         this.bulletType = bulletType;
         this.damage = damage;
 

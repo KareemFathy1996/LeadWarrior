@@ -62,9 +62,7 @@ function gameInit() {
     game.style.backgroundImage = "url('" + map.src + "')";
 
     // hero
-    gameHero = new Hero(heroType);
-    gameHero.x = map.startX;
-    gameHero.y = map.startY;
+    gameHero = new Hero(heroType, map.startX, map.startY);
     addImg(gameHero);
 
     // enemies
@@ -138,10 +136,10 @@ function render() {
 function collisionDetection() {
     for (var i = 0; i < bullets.length; i++) {
         var bullet = bullets[i];
-        if (bullet.fireSrc == "enemy1" && checkCollision(bullet, gameHero)) {
+        if (bullet.name == "enemy1" && checkCollision(bullet, gameHero)) {
             collisionDetected(bullet, gameHero);
             continue;
-        } else if (bullet.fireSrc == "hero") {
+        } else if (bullet.name == "hero") {
             for (var j = 0; j < enemies.length; j++) {
                 var enemy = enemies[j];
                 if (checkCollision(bullet, enemy)) {
