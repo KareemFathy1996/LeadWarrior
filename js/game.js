@@ -20,6 +20,7 @@ var bullets;
 var lastEnemiesSpawn;
 var nextEnemiesSpawn;
 var numOfNewEnemies;
+var enemiesKilled;
 
 var keyMap = { 37: false, 65: false, 38: false, 87: false, 39: false, 68: false, 40: false, 83: false };
 
@@ -76,6 +77,7 @@ function gameInit() {
     gameHeight = game.offsetHeight;
     gameWidthRatio = gameWidth / gameInitialWidth;
     gameHeightRatio = gameHeight / gameInitialHeight;
+    enemiesKilled = 0;
 
     // map
     game.innerHTML = "";
@@ -138,6 +140,7 @@ function remove() {
     }
     for (var i = 0; i < enemies.length; i++)
         if (enemies[i].removed) {
+            document.getElementById('menu-statistics-enemies-killed').innerHTML = ++enemiesKilled;
             removeImg(enemies[i].id);
             enemies.splice(i, 1);
             i--;
@@ -189,6 +192,11 @@ function collisionDetection() {
 
 // change status in menu & check if game won/lost
 function updateGameStatus() {
+    document.getElementById('menu-stats-name').innerHTML = gameHero.name;
+    document.getElementById('menu-stats-health').innerHTML = gameHero.health + '/' + gameHero.maxHealth;
+    document.getElementById('menu-stats-attackSpeed').innerHTML = gameHero.attackSpeed;
+    document.getElementById('menu-stats-movementSpeed').innerHTML = gameHero.movementSpeed;
+
     if (map.mode != "survival") {
         if (enemies.length == 0)
             gameWon();
