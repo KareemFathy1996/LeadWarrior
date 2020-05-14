@@ -1,7 +1,7 @@
 class Hero extends Firing {
     constructor(heroType, x, y) {
         super(heroType, false, x, y, 45, heroType.touchDamage,
-            false);
+            false, 'hero');
     }
 
     // get new position. if hero can move to the new position move else do nothing

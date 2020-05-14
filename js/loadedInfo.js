@@ -1,17 +1,20 @@
 var bulletsTypes = { // name, width, height, maxHealth, movementSpeed
-    'hero': new BulletType("hero", bulletWidth, bulletHeight, 0, bulletMovementSpeed),
-    'enemy1': new BulletType("enemy1", bulletWidth, bulletHeight, 0, bulletMovementSpeed),
+    'Eevee': new BulletType("Eevee", 25, 25, 0, 3),
+    'meow': new BulletType("meow", 25, 25, 0, 3),
+    'zubat': new BulletType("zubat", 25, 25, 0, 3),
+    'Gengar': new BulletType("Gengar", 25, 25, 0, 3),
+    'Charizard': new BulletType("Charizard", 25, 25, 0, 3),
 };
 
 var enemiesTypes = { // name, width, height, maxHealth, movementSpeed, attackSpeed, numOfBullets, bulletType, bulletDamage, touchDamage
-    'meow': new EnemyType('meow', enemyWidth, enemyHeight, enemyHealth, enemyMovementSpeed, enemyAttackSpeed, 1, bulletsTypes['enemy1'], bulletDamage, 0.1),
-    'zubat': new EnemyType('zubat', enemyWidth, enemyHeight, enemyHealth, enemyMovementSpeed, enemyAttackSpeed, 1, bulletsTypes['enemy1'], bulletDamage, 0.1),
+    'meow': new EnemyType('meow', 30, 30, 50, 2, 700, 1, bulletsTypes['meow'], 20, 0),
+    'zubat': new EnemyType('zubat', 30, 30, 30, 2, 700, 3, bulletsTypes['zubat'], 10, 0),
 };
 
 var heroesTypes = [ //name, width, height, maxHealth, movementSpeed, attackSpeed, numOfBullets, bulletType, bulletDamage, touchDamage
-    new HeroType("Eevee", heroWidth, heroHeight, 50, 4.5, 500, 1, bulletsTypes['hero'], bulletDamage, 0.1),
-    new HeroType("Charizard", heroWidth, heroHeight, 60, 4.0, 600, 1, bulletsTypes['hero'], bulletDamage, 0.1),
-    new HeroType("Gengar", heroWidth, heroHeight, 70, 3.5, 700, 1, bulletsTypes['hero'], bulletDamage, 0.1),
+    new HeroType("Eevee", 50, 50, 50, 4.5, 500, 1, bulletsTypes['Eevee'], 10, 0),
+    new HeroType("Gengar", 70, 70, 70, 3.5, 700, 3, bulletsTypes['Gengar'], 15, 0),
+    new HeroType("Charizard", 60, 60, 60, 4.0, 600, 5, bulletsTypes['Charizard'], 20, 0),
 ];
 
 var maps = [ // src, startX, startY, enemies

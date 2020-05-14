@@ -2,7 +2,7 @@ class Enemy extends Firing {
 
     constructor(enemyType, x, y) {
         super(enemyType, true, x, y, 0, enemyType.touchDamage,
-            true);
+            true, 'enemy');
 
         this.newAngle();
     }

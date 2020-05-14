@@ -33,7 +33,7 @@ body {
 }
 
 #game-menu-stats {
-    width: calc(47.5% - 16px);
+    width: calc(43.5% - 16px);
     height: calc(98% - 13.5px);
     margin: 3px;
     background-color: rgb(154, 219, 152);
@@ -43,7 +43,7 @@ body {
 }
 
 #game-menu-statistics {
-    width: calc(47.5% - 16px);
+    width: calc(43.5% - 16px);
     height: calc(98% - 13.5px);
     margin: 3px;
     background-color: rgb(180, 210, 230);
@@ -61,7 +61,17 @@ body {
 
 #prev:hover {
     cursor: pointer;
-    src: "../assets/back2.png";
+}
+
+#pause {
+    width: calc(5% - 11px);
+    height: calc(98% - 8.5px);
+    margin: 3px;
+    display: none;
+}
+
+#pause:hover {
+    cursor: pointer;
 }
 
 #game-container {
@@ -253,6 +263,50 @@ body {
 #game-menu-stats table .td4,
 #game-menu-statistics table .td4 {
     width: 10%;
+}
+
+.pause-menu {
+    width: calc(100% - 5px);
+    height: calc(100% - 5px);
+    border: rgb(48, 48, 30) 2.5px solid;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(141, 103, 97, 0.5);
+    z-index: 1;
+    display: none;
+}
+
+.pause-menu-div {
+    width: 200px;
+    margin: auto;
+    margin-top: 100px;
+    border: rgb(126, 126, 60) 2.5px solid;
+    border-radius: 5px;
+    background-color: rgb(31, 24, 23);
+}
+
+.pause-menu-button {
+    width: calc(100% - 10px);
+    height: 50px;
+    margin: 5px;
+    border: rgb(126, 126, 60) 2.5px solid;
+    border-radius: 5px;
+    background-color: rgb(146, 59, 44);
+}
+
+.pause-menu-button:hover {
+    cursor: pointer;
+    background-color: rgb(66, 45, 42);
+}
+
+.pause-menu-text {
+    width: calc(100% - 15px);
+    height: 50px;
+    text-align: center;
+    margin: 5px;
+    color: turquoise;
 }
 
 

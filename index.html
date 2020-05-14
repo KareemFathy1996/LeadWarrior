@@ -46,6 +46,7 @@
                     </tr>
                 </table>
             </div>
+            <img id="pause" src="assets/accessories/pause.png" onclick="showPause();" onmouseover="this.src='assets/accessories/pause2.png';" onmouseout="this.src='assets/accessories/pause.png';">
         </div>
         <div id="game-container">
             <div id="loading-screen">
@@ -95,6 +96,23 @@
             </div>
 
             <div id="game" tabindex="-1">
+            </div>
+            <div class="pause-menu" id="pause-menu">
+                <div class="pause-menu-div">
+                    <button class="pause-menu-button" onclick="hidePause();">Resume</button>
+                </div>
+            </div>
+            <div class="pause-menu" id="game-won">
+                <div class="pause-menu-div">
+                    <div class="pause-menu-text">Congratulations You Won</div>
+                    <button class="pause-menu-button" onclick="changePage('room')">Go to Hero Page</button>
+                </div>
+            </div>
+            <div class="pause-menu" id="game-lost">
+                <div class="pause-menu-div">
+                    <div class="pause-menu-text">Game Over</div>
+                    <button class="pause-menu-button" onclick="changePage('room')">Go to Hero Page</button>
+                </div>
             </div>
         </div>
     </div>

@@ -46,6 +46,7 @@ function showGame() {
     document.getElementById("prev").style.display = "inline-block";
     document.getElementById("game-menu-stats").style.display = "inline-block";
     document.getElementById("game-menu-statistics").style.display = "inline-block";
+    document.getElementById("pause").style.display = "inline-block";
     document.getElementById("prev").onclick = function() {
         changePage("room");
     };
@@ -57,7 +58,11 @@ function hideGame() {
     document.getElementById("prev").style.display = "none";
     document.getElementById("game-menu-stats").style.display = "none";
     document.getElementById("game-menu-statistics").style.display = "none";
+    document.getElementById("pause").style.display = "none";
     pause();
+    document.getElementById("pause-menu").style.display = "none";
+    document.getElementById("game-won").style.display = "none";
+    document.getElementById("game-lost").style.display = "none";
 }
 
 /* backbone */
@@ -85,6 +90,16 @@ function gameInit() {
 function resume() {
     game.focus();
     loopIntervalId = setInterval(loop, loopInterval);
+}
+
+function showPause() {
+    document.getElementById("pause-menu").style.display = "inline-block";
+    pause();
+}
+
+function hidePause() {
+    document.getElementById("pause-menu").style.display = "none";
+    resume();
 }
 
 function pause() {
@@ -152,10 +167,10 @@ function render() {
 function collisionDetection() {
     for (var i = 0; i < bullets.length; i++) {
         var bullet = bullets[i];
-        if (bullet.name == "enemy1" && checkCollision(bullet, gameHero)) {
+        if (bullet.fireSrc == "enemy" && checkCollision(bullet, gameHero)) {
             collisionDetected(bullet, gameHero);
             continue;
-        } else if (bullet.name == "hero") {
+        } else if (bullet.fireSrc == "hero") {
             for (var j = 0; j < enemies.length; j++) {
                 var enemy = enemies[j];
                 if (checkCollision(bullet, enemy)) {
@@ -169,10 +184,10 @@ function collisionDetection() {
 
 // change status in menu & check if game won/lost
 function updateGameStatus() {
-    if (gameHero.health <= 0)
-        gameLost();
     if (enemies.length == 0)
         gameWon();
+    if (gameHero.health <= 0)
+        gameLost();
 }
 
 function fire() {
@@ -189,8 +204,8 @@ function addEnemies() {
         var type = map.enemies[i].type;
         var num = map.enemies[i].number;
         for (var j = 0; j < num; j++) {
-            var x = Math.floor(Math.random() * (gameInitialWidth - enemyWidth));
-            var y = Math.floor(Math.random() * (gameInitialHeight - enemyHeight));
+            var x = Math.floor(Math.random() * (gameInitialWidth - type.width));
+            var y = Math.floor(Math.random() * (gameInitialHeight - type.height));
             var enemy = new Enemy(type, x, y);
             enemies.push(enemy);
             addImg(enemy);
@@ -295,14 +310,14 @@ function collisionDetected(object1, object2) {
 
 // show game won screen then stop game
 function gameWon() {
+    document.getElementById("game-won").style.display = "inline-block";
     pause();
-    alert('game won');
 }
 
 // show game lost screen then stop game
 function gameLost() {
+    document.getElementById("game-lost").style.display = "inline-block";
     pause();
-    alert('game lost');
 }
 
 /* listener */
