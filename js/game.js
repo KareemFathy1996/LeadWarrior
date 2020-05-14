@@ -20,7 +20,9 @@ var bullets;
 var lastEnemiesSpawn;
 var nextEnemiesSpawn;
 var numOfNewEnemies;
+
 var enemiesKilled;
+var timePassed;
 
 var keyMap = { 37: false, 65: false, 38: false, 87: false, 39: false, 68: false, 40: false, 83: false };
 
@@ -89,6 +91,7 @@ function gameInit() {
 
     // enemies
     lastEnemiesSpawn = -1;
+    timePassed = 0;
     bullets = [];
     enemies = [];
 }
@@ -196,6 +199,8 @@ function updateGameStatus() {
     document.getElementById('menu-stats-health').innerHTML = gameHero.health + '/' + gameHero.maxHealth;
     document.getElementById('menu-stats-attackSpeed').innerHTML = gameHero.attackSpeed;
     document.getElementById('menu-stats-movementSpeed').innerHTML = gameHero.movementSpeed;
+    document.getElementById('time-passed').innerHTML = Math.floor(timePassed / (60 * 60 * 1000)) + ':' + Math.floor(timePassed / (60 * 1000)) % 60 + ':' + Math.floor(timePassed / 1000) % 60;
+    timePassed += loopInterval;
 
     if (map.mode != "survival") {
         if (enemies.length == 0)
