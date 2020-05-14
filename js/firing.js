@@ -9,7 +9,7 @@ class Firing extends Moving {
         this.damage = type.bulletDamage;
         this.firing = firing;
 
-        this.lastFire = 0;
+        this.lastFire = new Date(Date.now() + peaceTime);
         this.fireSrc = fireSrc;
     }
 
