@@ -23,6 +23,7 @@ var numOfNewEnemies;
 
 var enemiesKilled;
 var timePassed;
+var mins;
 
 var keyMap = { 37: false, 65: false, 38: false, 87: false, 39: false, 68: false, 40: false, 83: false };
 
@@ -80,6 +81,7 @@ function gameInit() {
     gameWidthRatio = gameWidth / gameInitialWidth;
     gameHeightRatio = gameHeight / gameInitialHeight;
     enemiesKilled = 0;
+    mins = 0;
     document.getElementById('menu-statistics-map-mode').innerHTML = map.mode;
 
     // map
@@ -201,6 +203,11 @@ function updateGameStatus() {
     document.getElementById('menu-stats-attackSpeed').innerHTML = gameHero.attackSpeed;
     document.getElementById('menu-stats-movementSpeed').innerHTML = gameHero.movementSpeed;
     document.getElementById('time-passed').innerHTML = Math.floor(timePassed / (60 * 60 * 1000)) + ':' + Math.floor(timePassed / (60 * 1000)) % 60 + ':' + Math.floor(timePassed / 1000) % 60;
+    if (Math.floor(timePassed / (60 * 1000)) % 60 > mins) {
+        mins = Math.floor(timePassed / (60 * 1000)) % 60;
+        minNewEnemies++;
+        maxNewEnemies++;
+    }
     timePassed += loopInterval;
 
     if (map.mode != "Survival") {
