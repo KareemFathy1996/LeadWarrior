@@ -308,6 +308,8 @@ function renderImg(object) {
     var img = document.getElementById('img' + object.id);
     img.style.width = object.width * gameWidthRatio + 'px';
     img.style.height = object.height * gameHeightRatio + 'px';
+
+    img.style.transform = 'rotate(' + (object.angle - 90) + 'deg)';
 }
 
 // get background image src to preload
