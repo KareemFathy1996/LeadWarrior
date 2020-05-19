@@ -15,9 +15,9 @@ var enemiesTypes = { // name, width, height, maxHealth, movementSpeed, attackSpe
 };
 
 var heroesTypes = [ //name, width, height, maxHealth, movementSpeed, attackSpeed, numOfBullets, bulletType, bulletDamage, touchDamage
-    new HeroType("Ninja", 30, 30, 100, 2.5, 800, 1, bulletsTypes['Ninja'], 10, 0),
-    new HeroType("Mage", 30, 30, 100, 2.5, 800, 1, bulletsTypes['Mage'], 10, 0),
-    new HeroType("Dragon", 30, 30, 100, 2.5, 800, 1, bulletsTypes['Dragon'], 10, 0),
+    new HeroType("Ninja", 30, 30, 100, 2.5, 500, 1, bulletsTypes['Ninja'], 10, 0),
+    new HeroType("Mage", 30, 30, 100, 2.5, 500, 1, bulletsTypes['Mage'], 10, 0),
+    new HeroType("Dragon", 30, 30, 100, 2.5, 500, 1, bulletsTypes['Dragon'], 10, 0),
 ];
 
 var maps = [ // src, mode, numOfNewEnemies, startX, startY, enemies
