@@ -80,6 +80,7 @@ function gameInit() {
     gameWidthRatio = gameWidth / gameInitialWidth;
     gameHeightRatio = gameHeight / gameInitialHeight;
     enemiesKilled = 0;
+    document.getElementById('menu-statistics-map-mode').innerHTML = map.mode;
 
     // map
     game.innerHTML = "";
@@ -202,7 +203,7 @@ function updateGameStatus() {
     document.getElementById('time-passed').innerHTML = Math.floor(timePassed / (60 * 60 * 1000)) + ':' + Math.floor(timePassed / (60 * 1000)) % 60 + ':' + Math.floor(timePassed / 1000) % 60;
     timePassed += loopInterval;
 
-    if (map.mode != "survival") {
+    if (map.mode != "Survival") {
         if (enemies.length == 0)
             gameWon();
     }
@@ -231,13 +232,13 @@ function addEnemies() {
         lastEnemiesSpawn = new Date();
         nextEnemiesSpawn = minNewEnemyTime + Math.floor(Math.random() * maxNewEnemyTime);
         numOfNewEnemies = Math.round(Math.random() * 4) + 1;
-    } else if (map.mode == "survival" && new Date() - nextEnemiesSpawn >= lastEnemiesSpawn) {
+    } else if (map.mode == "Survival" && new Date() - nextEnemiesSpawn >= lastEnemiesSpawn) {
         for (var i = 0; i < numOfNewEnemies; i++) {
             type = map.enemies[Math.round(Math.random() * (map.enemies.length - 1))].type;
             var x = Math.floor(Math.random() * (gameInitialWidth - type.width));
             var y = Math.floor(Math.random() * (gameInitialHeight - type.height));
             addEnemy(type, x, y);
-            numOfNewEnemies = Math.round(Math.random() * 4) + 1;
+            numOfNewEnemies = Math.round(Math.random() * maxNewEnemies) + minNewEnemies;
         }
         lastEnemiesSpawn = new Date();
         nextEnemiesSpawn = minNewEnemyTime + Math.floor(Math.random() * maxNewEnemyTime);

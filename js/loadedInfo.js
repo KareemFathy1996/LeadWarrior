@@ -18,21 +18,21 @@ var heroesTypes = [ //name, width, height, maxHealth, movementSpeed, attackSpeed
 ];
 
 var maps = [ // src, startX, startY, enemies
-    new Map("assets/maps/1.jpg", "survival", 1, 10, 10, [{
+    new Map("assets/maps/1.jpg", "Survival", 1, 10, 10, [{
         'type': enemiesTypes['zubat'],
         'number': '1'
     }, {
         'type': enemiesTypes['meow'],
         'number': '3'
     }]),
-    new Map("assets/maps/2.jpg", "survival", 1, 10, 10, [{
+    new Map("assets/maps/2.jpg", "static", 1, 10, 10, [{
         'type': enemiesTypes['zubat'],
         'number': '2'
     }, {
         'type': enemiesTypes['meow'],
         'number': '2'
     }]),
-    new Map("assets/maps/3.jpg", "static", 1, 10, 10, [{
+    new Map("assets/maps/3.jpg", "Survival", 1, 10, 10, [{
         'type': enemiesTypes['zubat'],
         'number': '3'
     }, {

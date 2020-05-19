@@ -13,3 +13,6 @@ var maxNewAngleTime = 1500;
 
 var minNewEnemyTime = 3000;
 var maxNewEnemyTime = 5500;
+
+var minNewEnemies = 2;
+var maxNewEnemies = 3 - minNewEnemies;
